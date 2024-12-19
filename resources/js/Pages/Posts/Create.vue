@@ -48,7 +48,6 @@
                             </option>
                         </select>
                         <InputError :message="form.errors.topic_id" class="mt-1" />
-
                     </div>
 
                     <div class="mt-3">

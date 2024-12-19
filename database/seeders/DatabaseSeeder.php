@@ -23,9 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TopicSeeder::class);
         $topics = Topic::all();
 
-        $services = Service::factory(2)->create();
-        $packages = Package::factory(2)->create();
-
         $users = User::factory(10)->create();
 
         $posts = Post::factory(20)
