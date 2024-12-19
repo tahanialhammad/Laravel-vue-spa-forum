@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete(); //when delete user , we delte all his likes
-         //like post or comment by polymophs relation ship (type , id )
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->morphs('likeable');
             $table->timestamps();
-
             $table->unique(['user_id', 'likeable_type', 'likeable_id']); 
         });
     }

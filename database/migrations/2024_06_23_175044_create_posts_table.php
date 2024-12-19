@@ -20,7 +20,6 @@ return new class extends Migration
                 $table->string('title');
                 $table->longText('body');
                 $table->string('image')->nullable();
-                //qweqly than count every time
                 $table->unsignedBigInteger('likes_count')->default(0);
                 $table->timestamps();
             });

@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
-// use App\Http\Resources\PackageResource;
 use App\Http\Resources\ServiceResource;
-// use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
@@ -19,12 +17,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-             $services = ServiceResource::collection(Service::latest()->latest('id')->paginate());
-       // $services = ServiceResource::collection(Service::with('packages')->latest()->paginate());
-
+        $services = ServiceResource::collection(Service::latest()->latest('id')->paginate());
         return inertia('Services/Index', [
             'services' => $services,
-         //   'packageItems' => PackageResource::collection(Package::all()),
         ]);
     }
 
@@ -47,9 +42,7 @@ class ServiceController extends Controller
             'description' => ['required', 'string', 'min:5', 'max:10000'],
         ]);
 
-        $service = Service::create($data);
-
-        // return redirect($service->showRoute());
+        Service::create($data);
         return redirect(route('services.index'))
             ->banner('Service created.');
     }
@@ -63,9 +56,6 @@ class ServiceController extends Controller
 
             return redirect($service->showRoute($request->query()), status: 301); //301 permanent redirect to correct route
         }
-
-      //  $service->load('packages');
-
         return inertia('Services/Show', [
             'service' => ServiceResource::make($service),
         ]);

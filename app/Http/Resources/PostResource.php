@@ -23,30 +23,20 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            //  'user' => UserResource::make($this->user), //lazy load 
-            // 'user' => $this->whenLoaded('user', fn () => UserResource::make($this->user)), //load relation user when we needed
-            // 'topic' => $this->whenLoaded('topic', fn () => TopicResource::make($this->topic)),
-            //cleaner
             'user' => UserResource::make($this->whenLoaded('user')),
             'topic' => TopicResource::make($this->whenLoaded('topic')),
-
             'title' => $this->title,
             'body' => $this->body,
             'html' => $this->html,
-
-            // 'likes_count' => $this->likes_count,
             'likes_count' => Number::abbreviate($this->likes_count),
-
             'image' => $this->image,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
-            // for slug url 
+            // Slug url 
             'routes' => [
                 'show' => $this->showRoute(),
             ],
             'can' => [
-                // 'like' => $request->user()?->can('create', [Like::class, $this->resource]), //make helper method withLikePermission
-                //$request->user.... wil return true to the method 
                 'like' => $this->when($this->withLikePermission, fn () => $request->user()?->can('create', [Like::class, $this->resource])),
             ],
         ];
