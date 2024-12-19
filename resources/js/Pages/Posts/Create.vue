@@ -48,6 +48,10 @@
                             </option>
                         </select>
                         <InputError :message="form.errors.topic_id" class="mt-1" />
+
+<TextInput id="newtopic" class="w-full my-4" v-model="form.newtopic"
+placeholder="Add new topic" />
+
                     </div>
 
                     <div class="mt-3">
@@ -105,6 +109,7 @@ const form = useForm({
     topic_id: props.topics[0]?.id || null,
     body: "",
     image: null,
+    newtopic : "",
 });
 
 const createPost = () => form.post(route('posts.store'));
