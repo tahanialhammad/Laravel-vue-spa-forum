@@ -45,7 +45,7 @@ Route::middleware([
   //  Route::resource('packages', PackageController::class)->only(['store', 'update', 'destroy' ]);
     // Route::delete('packages/{package}', [PackageController::class, 'destroy'])->name('packages.destroy');
     
-    // Route::post('services/', [ServiceController::class, 'store'])->name('services.store');
+     Route::post('services/', [ServiceController::class, 'store'])->name('services.store');
     Route::resource('services', ServiceController::class)->only(['store', 'update', 'destroy' ]);
 
 });

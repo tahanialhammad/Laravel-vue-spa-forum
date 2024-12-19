@@ -37,7 +37,10 @@
                     </div>
 
                     <div class="mt-3">
-                        <InputLabel for="topic_id">Select a Topic</InputLabel>
+                        <div class="flex justify-between items-center mb-2">
+                            <InputLabel for="topic_id">Select a Topic</InputLabel>
+                            <PrimaryButton>+</PrimaryButton>
+                        </div>
                         <select v-model="form.topic_id" id="topic_id"
                             class="mt-1 w-full rounded-md text-black border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500">
                             <option v-for="topic in topics" :key="topic.id" :value="topic.id">
@@ -45,6 +48,7 @@
                             </option>
                         </select>
                         <InputError :message="form.errors.topic_id" class="mt-1" />
+
                     </div>
 
                     <div class="mt-3">
@@ -53,7 +57,8 @@
                             class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500" />
                         <InputError :message="form.errors.image" class="mt-1" />
                         <!-- Image Preview -->
-                        <img v-if="imagePreview" :src="imagePreview" alt="Image preview" class="mt-2 w-full rounded-md" />
+                        <img v-if="imagePreview" :src="imagePreview" alt="Image preview"
+                            class="mt-2 w-full rounded-md" />
                     </div>
 
                 </div>
