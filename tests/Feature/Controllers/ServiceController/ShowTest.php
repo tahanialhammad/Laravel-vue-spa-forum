@@ -18,7 +18,7 @@ it('can show a service', function () {
 it('passes a service to the view', function () {
     $service = Service::factory()->create();
 
-    $service->load('packages');
+    // $service->load('packages');
 
     // get(route('services.show', $service))
     //     ->assertHasResource('service', ServiceResource::make($service));

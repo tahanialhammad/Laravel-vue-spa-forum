@@ -18,32 +18,13 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
-    // public function index(Topic $topic = null)
-    // {
-    //     $posts = Post::with(['user', 'topic'])
-    //         ->when($topic, fn (Builder $query) => $query->whereBelongsTo($topic))
-    //         ->latest()
-    //         ->latest('id')
-    //         ->paginate();
-
-    //     return inertia('Posts/Index', [
-    //         'posts' => PostResource::collection($posts),
-    //         'topics' => fn () => TopicResource::collection(Topic::all()),
-    //         'selectedTopic' => fn () => $topic ? TopicResource::make($topic) : null,
-    //     ]);
-    // }
-
-    //search 
-
     public function index(Request $request, Topic $topic = null)
     {
         $posts = Post::with(['user', 'topic'])
             ->when($topic, fn(Builder $query) => $query->whereBelongsTo($topic))
-            // where(...) + orwhere(...) === whereAny([...],...)
 
             ->when(
                 $request->query('query'),
@@ -52,7 +33,6 @@ class PostController extends Controller
             ->latest()
             ->latest('id')
             ->paginate();
-        //   ->withQueryString(); // when using search pagination must stil work with all serach results
 
         $recentPosts = Post::latest()
             ->take(2)
@@ -76,38 +56,27 @@ class PostController extends Controller
             'topics' => fn() => TopicResource::collection(Topic::all()),
         ]);
     }
-
     /**
      * Store a newly created resource in storage.
      */
 
-    // public function store(StorePostRequest $request)
-
     public function store(Request $request)
     {
-        // if ($request->newtopic) {
-        //     Topic::create([
-        //         "slug" => $request->newtopic,
-        //         "name" => $request->newtopic,
-        //         "description" => $request->newtopic,
-        //     ]);
-        // }
-
         if ($request->newtopic) {
-        $newTopic = Topic::create([
-            'slug' => Str::slug($request->newtopic),  // Ensure slug is unique
-            'name' => $request->newtopic,
-            'description' => $request->newtopic,
-        ]);
-        $topicId = $newTopic->id;  // Get the ID of the newly created topic
-    } else {
-        // Use the existing topic_id if no new topic is provided
-        $topicId = $request->topic_id;
-    }
+            $newTopic = Topic::create([
+                'slug' => Str::slug($request->newtopic),
+                'name' => $request->newtopic,
+                'description' => $request->newtopic,
+            ]);
+            $topicId = $newTopic->id;  // Get the ID of the newly created topic
+        } else {
+            // Use the existing topic_id if no new topic is provided
+            $topicId = $request->topic_id;
+        }
 
         $data =  $request->validate([
             'title' => 'required|string|max:255',
-         //   'topic_id' => 'required|exists:topics,id',
+            //   'topic_id' => 'required|exists:topics,id',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -123,21 +92,15 @@ class PostController extends Controller
             'image' => $imagePath,
             'user_id' => $request->user()->id,
         ]);
-
-        // return to_route('posts.show', $post);
         // use slug 
-
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
-
-
     /**
      * Display the specified resource.
      */
     public function show(Request $request, Post $post)
     {
         //use request to update slug url 
-        // if (! Str::contains($post->showRoute(), $request->path())) {
         if (!Str::endsWith($post->showRoute(), $request->path())) {
 
             return redirect($post->showRoute($request->query()), status: 301); //give page of any other pram
@@ -151,18 +114,12 @@ class PostController extends Controller
 
         return inertia('Posts/Show', [
 
-            // 'post' => PostResource::make($post), // fn () => It is faster because it is only executed when we need to pass to the front end.
-            // 'post' => fn () => PostResource::make($post),
             'post' => fn() => PostResource::make($post)->withLikePermission(),
-            //       'comments' => fn () => CommentResource::collection($post->comments()->with('user')->latest()->latest('id')->paginate(10)),
-            //becouse this is not a resouce that can use withLikePermission method directly , it is a collection , sp we tansferr coltion to resoce then use method  
-
             'post' => fn() => PostResource::make($post)->withLikePermission(),
             'recentPosts' => PostResource::collection($recentPosts),
             'comments' => function () use ($post) {
                 $commentResource = CommentResource::collection($post->comments()->with('user')->latest()->latest('id')->paginate(10));
                 $commentResource->collection->transform(fn($resource) => $resource->withLikePermission());
-
                 return $commentResource;
             },
         ]);

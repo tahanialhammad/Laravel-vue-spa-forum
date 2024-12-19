@@ -23,12 +23,7 @@ class CommentController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
-
-        //redirect
-        // return to_route('posts.show', $post)
-        // ->banner('Comment added.'); // Banner componenet is macro flash message from jetstream 
-
-        //use new redriect with slug
+        //Redriect with slug
 
         return redirect($post->showRoute())
             ->banner('Comment added.');
@@ -62,13 +57,7 @@ class CommentController extends Controller
         Gate::authorize('delete', $comment);
 
         $comment->delete();
-        // Redirect to post_id to avoid doing the query again
-        //  return to_route('posts.show', $comment->post_id);
-
-        //to return to show and with the same page in pagination
-        // return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')])
-        // ->banner('Comment deleted.');
-        //use slug
+        //Redirect with slug
         return redirect($comment->post->showRoute(['page' => $request->query('page')]))
             ->banner('Comment deleted.');
     }

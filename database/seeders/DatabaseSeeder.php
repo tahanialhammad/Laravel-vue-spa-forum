@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //creat topic first
+        //Creat topic first
         $this->call(TopicSeeder::class);
         $topics = Topic::all();
 

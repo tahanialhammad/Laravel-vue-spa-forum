@@ -19,7 +19,6 @@ class ServiceResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'updated_at' => $this->updated_at,
-            'packages' => PackageResource::collection($this->whenLoaded('packages')),
             'routes' => [
                 'show' => $this->showRoute(),
             ],
