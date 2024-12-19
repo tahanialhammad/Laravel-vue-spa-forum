@@ -76,7 +76,6 @@ class PostController extends Controller
 
         $data =  $request->validate([
             'title' => 'required|string|max:255',
-            //   'topic_id' => 'required|exists:topics,id',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
