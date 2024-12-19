@@ -28,7 +28,7 @@
                     <div>
                         <InputLabel for="title">Service name</InputLabel>
                         <TextInput id="title" v-model="serviceForm.title" class="w-full"
-                            placeholder="Give package name code" />
+                            placeholder="Give Service name code" />
                     </div>
                     <div>
                         <InputLabel for="description">Service info</InputLabel>
