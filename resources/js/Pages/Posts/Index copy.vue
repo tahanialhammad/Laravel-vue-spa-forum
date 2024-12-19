@@ -1,0 +1,118 @@
+<template>
+    <AppLayout>
+        <Container>
+            <div>
+                <PageHeading
+                    v-text="selectedTopic ? selectedTopic.name : 'All Posts'"
+                />
+                <p v-if="selectedTopic" class="mt-1 text-sm text-gray-600">
+                    {{ selectedTopic.description }}
+                </p>
+
+                <menu class="flex space-x-1 mt-3 overflow-x-auto pb-2 pt-1">
+                    <li>
+                        <!-- <Pill :href="route('posts.index')" :filled="! selectedTopic">All Posts</Pill> -->
+<!-- to seve search by topic -->
+                        <Pill :href="route('posts.index', { query: searchForm.query })" :filled="! selectedTopic">All Posts</Pill>
+
+                    </li>
+                    <li v-for="topic in topics" :key="topic.id">
+                        <!-- <Pill :href="route('posts.index', { topic: topic.slug })"
+                              :filled="topic.id === selectedTopic?.id"
+                        >
+                            {{ topic.name }}
+                        </Pill> -->
+<!-- to seve search by topic -->
+
+                        <Pill :href="route('posts.index', { topic: topic.slug, query: searchForm.query })"
+                              :filled="topic.id === selectedTopic?.id"
+                        >
+                            {{ topic.name }}
+                        </Pill>
+                    </li>
+                </menu>
+
+                <form @submit.prevent="search" class="mt-4">
+                    <div>
+                        <InputLabel for="query">Search</InputLabel>
+                        <div class="flex space-x-2 mt-1">
+                            <TextInput v-model="searchForm.query" class="w-full" id="query"/>
+                            <SecondaryButton type="submit">Search</SecondaryButton>
+                            <DangerButton v-if="searchForm.query" @click="clearSearch">Clear</DangerButton>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <ul class="mt-4 divide-y">
+                <li
+                    v-for="post in posts.data"
+                    :key="post.id"
+                    class="flex flex-col items-baseline justify-between md:flex-row"
+                >
+                    <Link
+                        :href="post.routes.show"
+                        class="group block px-2 py-4"
+                    >
+                        <span
+                            class="text-lg font-bold group-hover:text-rose-500"
+                            >{{ post.title }}</span
+                        >
+                        <span
+                            class="block pt-1 text-sm text-gray-600 first-letter:uppercase"
+                            >{{ formattedDate(post) }} by
+                            {{ post.user.name }}</span
+                        >
+                    </Link>
+                    <Pill :href="route('posts.index', { topic: post.topic.slug })">
+                        {{ post.topic.name }}
+                    </Pill>
+                </li>
+            </ul>
+
+            <Pagination :meta="posts.meta" :only="['posts']" class="mt-2" />
+        </Container>
+    </AppLayout>
+</template>
+<script setup>
+import AppLayout from "@/Layouts/AppLayout.vue";
+import Container from "@/Components/Container.vue";
+import Pagination from "@/Components/Pagination.vue";
+import { Link, useForm, usePage } from "@inertiajs/vue3";
+import { formatDistance, parseISO } from "date-fns";
+import { relativeDate } from "@/Utilities/date.js";
+import PageHeading from "@/Components/PageHeading.vue";
+import Pill from "@/Components/Pill.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import InputLabel from "@/Components/InputLabel.vue";
+import TextInput from "@/Components/TextInput.vue";
+import DangerButton from "@/Components/DangerButton.vue";
+
+// defineProps(["posts", "topics", "selectedTopic"]);
+//from controller, to detect what is in query
+const props = defineProps(["posts", "topics", "selectedTopic", "query"]);
+
+const formattedDate = (post) => relativeDate(post.created_at);
+
+// const searchForm = useForm({
+//   //  query: '', //default value
+//     query: props.query, //to detect what is in query
+// });
+// const search = () => searchForm.get(route('posts.index'));
+
+//to search within all posts or within topic
+const searchForm = useForm({
+    query: props.query,
+    page: 1, //reset pagination when new search to search from page 1
+});
+
+const page = usePage(); //to get curent url index or topic
+const search = () => searchForm.get(page.url);
+const clearSearch = () => {
+    searchForm.query = '';
+    search();
+};
+
+
+</script>
