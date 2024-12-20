@@ -10,10 +10,9 @@
             <GradientCircle class="absolute -top-8 -left-2 z-0" />
 
             <!-- Text Content -->
-            <h1 class="text-5xl font-black w-2/3 z-10">Award Winning Digital Design Agency</h1>
+            <h1 class="text-5xl font-black w-2/3 z-10">Your Freelancing Community Hub!</h1>
             <h3 class="text-lg text-gray-300">
-                An award-winning digital design agency specializing in creative solutions, innovative branding, and
-                cutting-edge web design to elevate your business.
+                Are you a freelancer looking for guidance, support, and a place to share your journey? Whether you’re just starting or an experienced pro, our forum is the perfect space for you to connect, learn, and grow your freelancing career.
                 <!-- Small Circle SVG -->
                 <Circle class="absolute right-1/2 z-0" circleClass="fill-rose-500" />
 
@@ -21,8 +20,8 @@
 
             <Link
                 class="w-40 px-4 py-2 text-white font-bold text-center rounded-full bg-gradient-to-r from-emerald-500 to-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                :href="route('services.index')">
-            Contact us
+                :href="route('welcome')">
+                Join us
             </Link>
         </div>
 

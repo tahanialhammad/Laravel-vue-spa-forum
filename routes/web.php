@@ -5,7 +5,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
@@ -29,8 +28,7 @@ Route::middleware([
     'verified',
     IsAdminMiddleware::class,
 ])->group(function () {
-    Route::post('services/', [ServiceController::class, 'store'])->name('services.store');
-    Route::resource('services', ServiceController::class)->only(['store', 'update', 'destroy']);
+   //
 });
 
 
@@ -54,12 +52,9 @@ Route::middleware([
 // Site
 Route::controller(SiteController::class)->group(function () {
     Route::get('/', 'index')->name('welcome');
+    Route::get('contact', 'contact')->name('contact');
 });
 
 // Posts
 Route::get('posts/{topic?}', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}/{slug}', [PostController::class, 'show'])->name('posts.show'); // after use showroute with slug we can delete optionaly {slug?}'
-
-// Service 
-Route::get('services/', [ServiceController::class, 'index'])->name('services.index');
-Route::get('services/{service}/{slug}', [ServiceController::class, 'show'])->name('services.show');

@@ -5,15 +5,15 @@
             <div class="flex-1">
                 <div class="flex flex-col gap-4 items-start">
                     <Link :href="route('welcome')">
-                    <ApplicationMark class="block h-9 w-auto" />
+                    <ApplicationLogo class="block h-9 w-auto" />
                     </Link>
                     <p class="text-sm leading-relaxed">
-                        We are committed to delivering exceptional services to our customers,
-                        with a focus on quality, innovation, and customer satisfaction.
+                        We are a community of freelancers, developers, and digital strategists sharing knowledge and
+                        support to help you grow and succeed in the digital world
                     </p>
                     <Link
                         class="w-40 px-4 py-2 text-white font-bold text-center rounded-full bg-gradient-to-r from-emerald-500 to-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                        :href="route('services.index')">
+                        :href="route('welcome')">
                     Contact us
                     </Link>
                 </div>
@@ -58,6 +58,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import ApplicationMark from './ApplicationMark.vue';
+import ApplicationLogo from './ApplicationLogo.vue';
 
 const footerMenu1 = [
     {
@@ -70,10 +71,6 @@ const footerMenu1 = [
         url: route('posts.index'),
         route: 'posts.index',
     },
-    {
-        name: "Services",
-        url: route('services.index'),
-        route: 'services.index',
-    },
+
 ];
 </script>

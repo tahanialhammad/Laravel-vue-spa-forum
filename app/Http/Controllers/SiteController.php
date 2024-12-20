@@ -18,4 +18,8 @@ class SiteController extends Controller
             'posts' => PostResource::collection($posts),
         ]);
     }
+    public function contact()
+    {
+        return inertia('Contact/Index');
+    }
 }
