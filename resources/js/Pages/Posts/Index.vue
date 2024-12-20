@@ -6,9 +6,9 @@
                     <div
                         class="w-1/2 bg-gradient-to-r from-emerald-500 to-rose-500 rounded-3xl flex flex-col gap-4 p-10 items-start -me-11 z-10">
                         <h1 class="font-black text-4xl">
-                            Crisis is making online education economy go mainstream
+                            Your Hub for Freelancing, Design, and Development Discussions
                         </h1>
-                        <p>September 12, 2021</p>
+                        <p>12, September 2024</p>
                         <p class="text-black"> BY Roy Hipper</p>
                     </div>
                     <img class="w-1/2 rounded-3xl"
@@ -42,37 +42,6 @@
                 </menu>
 
             </div>
-
-            <!-- <Card cardType="vertical">
-                <template #cardHeader>
-                    <h6
-                    class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
-                    startups
-                </h6>
-                <h4 class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                    Lyft launching cross-platform service this week
-                </h4>
-                </template>
-<template #cardBody>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illo omnis laboriosam nobis culpa mollitia voluptatibus veniam eos tenetur ut adipisci magnam, id dolorum pariatur repudiandae, sint ullam. Quod, distinctio.</p>
-                </template>
-<template #cardFooter>
-                    <a href="#" class="inline-block">
-                    <button
-                        class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20"
-                        type="button">
-                        Learn More
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
-                        </svg>
-                    </button>
-                </a>
-                    </template>
-</Card> -->
-
-
-            <!-- <PostsCardsGrid :posts="posts.data" :formattedDate="formattedDate" /> -->
             <div class="flex">
                 <div class="w-3/4">
                     <PostsList class="" :posts="posts.data" :formattedDate="formattedDate" />
