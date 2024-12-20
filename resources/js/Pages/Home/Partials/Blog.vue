@@ -1,9 +1,9 @@
 <template>
     <div class="relative flex flex-col gap-4 items-start">
-        <h3 class="text-rose-500 my-8">BLOG</h3>
+        <h3 class="text-rose-500 my-8">Posts</h3>
         <div class="relative mb-8">
             <h1 class="relative font-black text-4xl z-10">
-                Latest Posts From Blog
+                Latest Forum Posts
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
         </div>

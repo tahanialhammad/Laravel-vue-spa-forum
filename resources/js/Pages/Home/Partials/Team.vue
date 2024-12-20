@@ -3,15 +3,14 @@
         <div class="grid grid-cols-3 gap-4 w-full">
             <div class="relative flex flex-col gap-4 items-start">
                 <Square class="absolute -top-5 left-5 z-0" />
-                <h3 class="text-rose-500 my-8">Our Team</h3>
+                <h3 class="text-rose-500 my-8">Our Contributors</h3>
                 <div class="relative mb-8">
                     <h1 class="relative font-black text-4xl z-10">
-                        Best Team Ever
+                        Meet Our Top Contributors
                     </h1>
                     <GradientCircle class="absolute -top-8 -left-10 z-0" />
                     <p class="text-slate-500 my-8">
-                        We have assembled a creative team of like-minded people who like to challenge themselves and get
-                        better with each new case.
+                        Discover insights and expertise from our top contributors, shaping the future of freelancing, design, and development.
                     </p>
                 </div>
             </div>
@@ -57,7 +56,7 @@
             <div class="flex items-center justify-center">
                 <Link
                     class="w-40 px-4 py-2 text-rose-500 font-bold text-center rounded-full border-2 hover:text-white border-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                    :href="route('services.index')">
+                    :href="route('welcome')">
                 Contact us
                 </Link>
 

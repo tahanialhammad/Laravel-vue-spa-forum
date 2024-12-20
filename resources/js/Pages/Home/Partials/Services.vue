@@ -1,9 +1,9 @@
 <template>
     <div class="relative flex flex-col gap-4 items-start">
-        <h3 class="text-rose-500 mb-4">Our Services</h3>
+        <h3 class="text-rose-500 mb-4">Our Main Topics</h3>
         <div class="relative mb-8">
-            <h1 class="relative font-black text-4xl z-10">
-                WIDE VARIETY OF SERVICES
+            <h1 class="relative font-black text-4xl z-10 uppercase">
+                Explore Digital World Areas
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
         </div>
