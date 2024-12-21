@@ -49,8 +49,8 @@
                         </select>
                         <InputError :message="form.errors.topic_id" class="mt-1" />
 
-<TextInput id="newtopic" class="w-full my-4" v-model="form.newtopic"
-placeholder="Add new topic" />
+                        <TextInput id="newtopic" class="w-full my-4" v-model="form.newtopic"
+                            placeholder="Add new topic" />
 
                     </div>
 
@@ -85,11 +85,6 @@ import { ref } from "vue";
 
 const props = defineProps(['topics']);
 
-// const handleFileUpload = (event) => {
-//     const file = event.target.files[0];
-//     form.image = file;
-// };
-
 const imagePreview = ref(null);
 
 const handleFileUpload = (event) => {
@@ -109,7 +104,7 @@ const form = useForm({
     topic_id: props.topics[0]?.id || null,
     body: "",
     image: null,
-    newtopic : "",
+    newtopic: "",
 });
 
 const createPost = () => form.post(route('posts.store'));

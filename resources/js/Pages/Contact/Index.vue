@@ -12,21 +12,12 @@
                     <GradientCircle class="absolute -top-8 -left-2 z-0" />
 
                     <!-- Text Content -->
-                    <h1 class="text-5xl font-black w-2/3 z-10">Contact us!</h1>
-                    <h3 class="text-lg text-gray-300">
-                        Are you a freelancer looking for guidance, support, and a place to share your journey? Whether
-                        you’re just starting or an experienced pro, our forum is the perfect space for you to connect,
-                        learn, and grow your freelancing career.
-                        <!-- Small Circle SVG -->
-                        <Circle class="absolute right-1/2 z-0" circleClass="fill-rose-500" />
+                    <h1 class="text-5xl font-black w-2/3 z-10">Get In Touch</h1>
 
-                    </h3>
+                    <Circle class="absolute right-1/2 z-0" circleClass="fill-rose-500" />
 
-                    <Link
-                        class="w-40 px-4 py-2 text-white font-bold text-center rounded-full bg-gradient-to-r from-emerald-500 to-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                        :href="route('welcome')">
-                    Join us
-                    </Link>
+                    <ContactForm />
+
                 </div>
 
                 <!-- Right Section with Image -->
@@ -52,5 +43,5 @@ import Container from "@/Components/Container.vue";
 import Circle from '@/Components/Svg/Circle.vue';
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 import Square from '@/Components/Svg/Square.vue';
-import { Link } from '@inertiajs/vue3';
+import ContactForm from "./Partials/ContactForm.vue";
 </script>
