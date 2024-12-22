@@ -3,7 +3,7 @@
         <Container>
             <div class="flex mb-10 items-center">
                 <!-- Left Section -->
-                <div class="w-1/2 flex flex-col gap-8 p-4 relative">
+                <div class="w-2/3 flex flex-col gap-8 p-4 pe-8 relative">
                     <!-- Small Circle SVG -->
                     <Circle class="absolute top-5 right-5 z-0" />
 
@@ -21,13 +21,11 @@
                 </div>
 
                 <!-- Right Section with Image -->
-                <div class="relative">
-
-                    <Square class="absolute top-5 right-5 z-0" />
-
+                <div class="relative flex-1">
+                    <Square class="absolute top-8 right-5 z-0" />
                     <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Contact-Image.png"
                         alt="Hero Image">
-                    <img class="absolute top-8 left-0"
+                    <img class="absolute -top-20 right-20"
                         src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Shape.png"
                         alt="Abstract Shape">
                 </div>

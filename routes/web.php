@@ -53,6 +53,8 @@ Route::middleware([
 Route::controller(SiteController::class)->group(function () {
     Route::get('/', 'index')->name('welcome');
     Route::get('contact', 'contact')->name('contact');
+    Route::post('contact', 'store')->name('contact.store');
+
 });
 
 // Posts
