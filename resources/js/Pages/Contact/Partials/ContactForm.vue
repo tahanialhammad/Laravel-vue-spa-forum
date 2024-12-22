@@ -50,6 +50,15 @@ const form = useForm({
     message: "",
 });
 
-const sendContact = () => form.post(route('contact.store'));
-
+//const sendContact = () => form.post(route('contact.store'));
+const sendContact = () => {
+    form.post(route('contact.store'), {
+        onSuccess: () => {
+            form.reset(); // Reset the form fields
+        },
+        onError: (errors) => {
+            console.error("Validation errors:", errors); // Log validation errors if needed
+        },
+    });
+};
 </script>

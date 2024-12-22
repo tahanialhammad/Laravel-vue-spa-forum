@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
+use App\Mail\contactUs;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -38,10 +39,11 @@ class SiteController extends Controller
         // Mail::raw('it work', function($message){
         //     $message->to('tahanina@yahoo.com')->subject($data['subject']);
         // });
-        Mail::raw('It works', function ($message) use ($data) {
-            $message->to('tahanina@yahoo.com')->subject($data['subject']);
-        });
+        // Mail::raw('It works', function ($message) use ($data) {
+        //     $message->to('tahanina@yahoo.com')->subject($data['subject']);
+        // });
       //  dd($data['email']);
+      Mail::to('tahanina@yahoo.com')->send(new contactUs($data));
 
         return redirect()->route('contact')->with('message', 'Email sent');
 
