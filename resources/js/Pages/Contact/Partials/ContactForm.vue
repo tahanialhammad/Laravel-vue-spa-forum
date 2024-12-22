@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createPost" class="mt-6 flex flex-col gap-4">
+    <form @submit.prevent="sendContact" class="mt-6 flex flex-col gap-4">
         <div>
             <InputLabel for="title" class="sr-only">Title</InputLabel>
             <TextInput id="name" class="w-full" v-model="form.name" placeholder="Your name" />
@@ -25,7 +25,7 @@
         </div>
 
         <div>
-            <PrimaryButton>Send</PrimaryButton>
+            <PrimaryButton type="submit">Send</PrimaryButton>
         </div>
     </form>
 </template>
@@ -49,4 +49,7 @@ const form = useForm({
     email: "",
     message: "",
 });
+
+const sendContact = () => form.post(route('contact.store'));
+
 </script>
