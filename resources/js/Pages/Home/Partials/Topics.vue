@@ -10,7 +10,7 @@
 
 
         <div class="grid grid-cols-3 gap-4 w-full">
-            <div v-for="(item, index) in services" :key="index"
+            <div v-for="(item, index) in topics" :key="index"
                 class="relative group bg-slate-900 py-10 px-20 h-40 rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out"
                 :style="{ backgroundImage: `url(${item.bgImage})` }">
                 <div
@@ -35,7 +35,7 @@
 <script setup>
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 
-const services = [
+const topics = [
     {
         name: "Corporate identity",
         bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Corporate-Identity.jpg"

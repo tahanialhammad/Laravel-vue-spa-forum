@@ -29,6 +29,7 @@ class ContactUs extends Mailable
     {
         return new Envelope(
             subject: $this->data['subject'],
+            from:$this->data['email']
         );
     }
 
@@ -38,7 +39,8 @@ class ContactUs extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.contact-us', // Adjust this path to match your blade file
+          //  view: 'emails.contact-us', 
+          markdown:'emails.contact-us', 
         );
     }
 

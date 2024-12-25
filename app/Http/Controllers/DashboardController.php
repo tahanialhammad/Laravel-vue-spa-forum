@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TopicResource;
+use App\Http\Resources\UserResource;
+use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,7 +20,9 @@ class DashboardController extends Controller
 
     private function showAdminDashboard()
     {
-        return inertia('Admin/Dashboard');
+        $users = UserResource::collection(User::paginate(10));    
+        $topics = TopicResource::collection(Topic::all());
+        return inertia('Admin/Dashboard', compact('users', 'topics'));
     }
 
     private function showUserDashboard()

@@ -18,7 +18,7 @@ class SiteController extends Controller
             ->latest()
             ->take(3)
             ->get();
-            
+
         return inertia('Home/Welcome', [
             'posts' => PostResource::collection($posts),
         ]);
@@ -32,33 +32,16 @@ class SiteController extends Controller
         $data =  $request->validate([
             'name' => 'required|string|max:20',
             'subject' => 'required|string|max:100',
-            'email'=>'required|email',
+            'email' => 'required|email',
             'message' => 'required|string',
         ]);
 
         // Mail::raw('it work', function($message){
         //     $message->to('tahanina@yahoo.com')->subject($data['subject']);
         // });
-        // Mail::raw('It works', function ($message) use ($data) {
-        //     $message->to('tahanina@yahoo.com')->subject($data['subject']);
-        // });
-      //  dd($data['email']);
-      Mail::to('tahanina@yahoo.com')->send(new contactUs($data));
+
+        Mail::to('tahanina@yahoo.com')->send(new contactUs($data));
 
         return redirect()->route('contact')->with('message', 'Email sent');
-
-        //V-4-7 send html email using email class and html templat in email1->contact-me
-        // Mail::to(request('email'))->send(new ContactMe('email 1 topic'));
-
-        // return redirect('/contact')
-        // ->with('message', 'Email sent');
-
-        //V-8 use new markdown template
-        // Mail::to(request('email'))->send(new Contact('email 1 topic'));
-
-        // return redirect('/contact')
-        // ->with('message', 'Email sent');
-
     }
-
 }
