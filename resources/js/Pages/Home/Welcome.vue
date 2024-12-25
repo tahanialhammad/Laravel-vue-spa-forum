@@ -14,7 +14,7 @@
 
                 <Features />
 
-                <Topics />
+                <Topics :topics="topics"/>
 
                 <Team />
                 
@@ -36,6 +36,6 @@ import AboutUs from './Partials/AboutUs.vue';
 import Blog from './Partials/Blog.vue';
 import Topics from './Partials/Topics.vue';
 
-defineProps(["posts"]);
+defineProps(["posts", 'topics']);
 
 </script>
