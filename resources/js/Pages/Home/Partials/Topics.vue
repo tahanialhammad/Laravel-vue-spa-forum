@@ -12,7 +12,7 @@
         <div class="grid grid-cols-3 gap-4 w-full">
             <div v-for="(item, index) in topics" :key="index"
                 class="relative group bg-slate-900 py-10 px-20 h-40 rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out"
-                :style="{ backgroundImage: `url(${item.bgImage})` }">
+                :style="{ backgroundImage: `url(${item.image})` }">
                 <div
                     class="absolute inset-0 bg-gradient-to-l from-slate-800 via-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style="background-size: 200% 100%; background-position: right center;"
@@ -35,30 +35,6 @@
 <script setup>
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 
-const topics = [
-    {
-        name: "Corporate identity",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Corporate-Identity.jpg"
-    },
-    {
-        name: "UI/UX Design",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/project-2-1-780x975-1-430x538.jpg"
-    },
-    {
-        name: "Media Strategy",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/project-6-1-780x1109-1-430x611.jpg"
-    },
-    {
-        name: "Brand Promotion",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/organizational-2-1100x619.jpg"
-    },
-    {
-        name: "Full Developement",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/project-2-1-780x975-1-430x538.jpg"
-    },
-    {
-        name: "Photo & Print",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/09/1-430x287.jpg"
-    },
-];
+const props = defineProps(["topics"]);
+
 </script>

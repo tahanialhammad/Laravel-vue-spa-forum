@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TopicController;
 use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\UserResource;
@@ -28,7 +29,9 @@ Route::middleware([
     'verified',
     IsAdminMiddleware::class,
 ])->group(function () {
-   //
+   //Topic
+   Route::resource('topics', TopicController::class);
+
 });
 
 
