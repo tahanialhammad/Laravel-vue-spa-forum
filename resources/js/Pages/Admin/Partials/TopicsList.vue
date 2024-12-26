@@ -20,19 +20,21 @@
                     <h3 class="relative font-black text-3xl">
                         {{ item.name }}
                     </h3>
-                    <div class="flex flex-col gap-1">
+                    <div class="flex flex-col gap-1 border-s-2 border-slate-500 h-full ps-2">
                         <!-- <Link preserve-scroll :href="route('topics.destroy', ['item', item.id])" method="delete">
                         x
                         </Link> -->
 
 
-                        <button :href="route('topics.destroy', item.id)" method="delete" as="button" type="button"
-                            class="text-red-600 hover:text-red-800" @click.prevent="confirmDelete(item)">
+                        <button method="delete" as="button" type="button" class="text-red-600 hover:text-red-800"
+                            @click.prevent="confirmDelete(item)">
                             <TrashIcon class="size-4 inline-block mr-1" />
                         </button>
 
                         <PencilIcon class="size-4 inline-block mr-1" />
-
+                        <div class="font-black text-3xl">
+                            {{ item.post_count }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,20 +47,11 @@
 <script setup>
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 import { TrashIcon, PencilIcon } from '@heroicons/vue/20/solid'
-import { Link, router } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 // Import SweetAlert2
 import Swal from 'sweetalert2';
 
 defineProps(["topics"]);
-
-// const confirmDelete = (item) => {
-//     if (window.confirm("Are you sure you want to delete this Topic?")) {
-//         // Proceed with the delete action through the Link component
-//         // The Link will automatically handle the DELETE request
-//     } else {
-//         console.log("Delete canceled");
-//     }
-// };
 
 
 
@@ -74,12 +67,11 @@ const confirmDelete = (item) => {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            // Use Inertia's router to handle the DELETE request
-            router.delete(route('topics.destroy', item.id), {
+            router.delete(route('topics.destroy', item), {
                 preserveScroll: true,
             });
 
-            Swal.fire('Deleted!', 'The topic has been deleted.', 'success');
+            // Swal.fire('Deleted!', 'The topic has been deleted.', 'success');
         } else {
             Swal.fire('Cancelled', 'The topic was not deleted.', 'info');
         }
