@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Http\Resources\TopicResource;
 use App\Http\Resources\UserResource;
 use App\Models\Topic;
@@ -20,9 +21,13 @@ class DashboardController extends Controller
 
     private function showAdminDashboard()
     {
-        $users = UserResource::collection(User::paginate(10));    
+        $users = UserResource::collection(User::paginate(10));
         $topics = TopicResource::collection(Topic::all());
-        return inertia('Admin/Dashboard', compact('users', 'topics'));
+        
+        $authUser = auth()->user();
+
+        $myPosts = $authUser->posts()->select('id', 'title', 'updated_at')->get();
+        return inertia('Admin/Dashboard', compact('users', 'topics', 'myPosts'));
     }
 
     private function showUserDashboard()
