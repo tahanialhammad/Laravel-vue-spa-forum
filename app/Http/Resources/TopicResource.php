@@ -19,6 +19,9 @@ class TopicResource extends JsonResource
             'slug' => $this->slug,
             'name' => $this->name,
             'description' => $this->description,
+            'image' => $this->image,
+            'post_count' => $this->posts()->count(),
+    
         ];
     }
 }

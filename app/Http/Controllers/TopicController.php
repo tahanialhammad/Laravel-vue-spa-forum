@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -57,8 +58,15 @@ class TopicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Topic $topic)
     {
-        dd('vv');
+        if ($topic->posts()->exists()) {
+
+            return back()->with('error', 'Cannot delete this topic because there are posts associated with it.');
+        }
+
+        $topic->delete();
+
+        return back()->with('message', 'Topic deleted successfully!');
     }
 }
