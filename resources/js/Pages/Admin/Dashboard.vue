@@ -14,11 +14,11 @@
                         <Pagination :meta="users.meta" class="mt-2" />
                     </div>
                     <div>
-                        <TopicsList :topics="topics"/>
+                        <MyPostsList :myPosts="myPosts" />
                     </div>
                 </div>
-                <div class="w-1/3">
-                    new topic
+                <div class="w-1/3 ps-8">
+                    <TopicsList :topics="topics"/>
                 </div>
             </div>
         </Container>
@@ -30,7 +30,8 @@ import Container from '@/Components/Container.vue';
 import UserTable from './Partials/UserTable.vue';
 import Pagination from '@/Components/Pagination.vue';
 import TopicsList from './Partials/TopicsList.vue';
+import MyPostsList from './Partials/MyPostsList.vue';
 
-const props = defineProps(["users", "topics"]);
+const props = defineProps(["users", "topics", "myPosts"]);
 
 </script>

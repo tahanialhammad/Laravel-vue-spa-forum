@@ -1,17 +1,17 @@
 <template>
     <div class="relative flex flex-col gap-4 items-start">
-        <h3 class="text-rose-500 mb-4">All Topics</h3>
-        <div class="relative mb-8">
+        <div class="relative mb-8 flex justify-between w-full">
             <h1 class="relative font-black text-4xl z-10 uppercase">
-                Explore Digital World Areas
+                All Topics
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
+            <SecondaryButton class="font-black text-3xl rounded-full">+</SecondaryButton>
         </div>
 
 
-        <div class="grid grid-cols-3 gap-4 w-full">
+        <div class="flex flex-wrap gap-4 w-full">
             <div v-for="(item, index) in topics" :key="index"
-                class="relative group bg-slate-900 p-8 h-40 rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out">
+                class="relative group bg-slate-900 p-8 h-40 w-full rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out">
                 <div
                     class="absolute inset-0 bg-gradient-to-l from-slate-800 via-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
@@ -45,6 +45,7 @@
 </template>
 
 <script setup>
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 import { TrashIcon, PencilIcon } from '@heroicons/vue/20/solid'
 import { router } from "@inertiajs/vue3";
