@@ -38,18 +38,6 @@ class Post extends Model
         return Attribute::set(fn ($value) => Str::title($value));
     }
 
-    //body and html, but its not best practice becouse we wil call this with every single edit on the post, so we go to use listener to event on the model
-    // public function body(): Attribute
-    // {
-    //     return Attribute::set(fn ($value) => [
-    //         'body'=> $value,
-    //         'html' => str($value)->markdown()
-    //         ]
-    //     );
-    // }
-    //to make slug url ,in array so we can add more pram ex page ....
-    // add it to post resource
-
     public function showRoute(array $parameters = [])
     {
         return route('posts.show', [$this, Str::slug($this->title), ...$parameters]);

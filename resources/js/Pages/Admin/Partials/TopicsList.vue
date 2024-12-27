@@ -9,7 +9,7 @@
         </div>
 
 
-        <div class="flex flex-wrap gap-4 w-full">
+        <div class="flex flex-wrap gap-4 w-full h-lvh overflow-y-scroll ">
             <div v-for="(item, index) in topics" :key="index"
                 class="relative group bg-slate-900 p-8 h-40 w-full rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out">
                 <div

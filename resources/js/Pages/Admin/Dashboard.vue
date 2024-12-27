@@ -14,10 +14,11 @@
                         <Pagination :meta="users.meta" class="mt-2" />
                     </div>
                     <div>
-                        <MyPostsList :myPosts="myPosts" />
+                        <MyPostsList :myPosts="myPosts.data" />
+                        <Pagination :meta="myPosts.meta" class="mt-2" />
                     </div>
                 </div>
-                <div class="w-1/3 ps-8">
+                <div class="w-1/3 ps-12">
                     <TopicsList :topics="topics"/>
                 </div>
             </div>

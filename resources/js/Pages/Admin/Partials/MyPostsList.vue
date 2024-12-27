@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-64 overflow-scroll">
+    <div class="h-64 overflow-y-scroll">
         <table class="min-w-full bg-slate-900 text-slate-200 rounded-3xl">
             <thead class=" border-b">
                 <tr>
@@ -12,6 +12,9 @@
                     </th>
                     <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                         Last update
+                    </th>
+                    <th scope="col" class="text-sm font-medium px-6 py-4 text-center">
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -26,11 +29,11 @@
                     <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
                         {{ post.updated_at }}
                     </td>
-                    <!-- <td>
-                        <Link :href="route('post.show')" class="group block px-2 py-4">
-                        view
+                    <td class="text-center">
+                        <Link :href="post.routes.show">
+                             <EyeIcon class="size-4 inline-block " />
                         </Link>
-                    </td> -->
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -39,6 +42,8 @@
 </template>
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import { HeartIcon, EyeIcon } from "@heroicons/vue/20/solid/index.js";
+
 
 defineProps(["myPosts"]);
 

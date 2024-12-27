@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-64 overflow-scroll">
+    <div class="h-64 overflow-y-scroll">
         <table class="min-w-full bg-slate-900 text-slate-200 rounded-3xl">
             <thead class=" border-b">
                 <tr>

@@ -62,4 +62,4 @@ Route::controller(SiteController::class)->group(function () {
 
 // Posts
 Route::get('posts/{topic?}', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post}/{slug}', [PostController::class, 'show'])->name('posts.show'); // after use showroute with slug we can delete optionaly {slug?}'
+Route::get('posts/{post}/{slug}', [PostController::class, 'show'])->name('posts.show'); // Use showroute with slug

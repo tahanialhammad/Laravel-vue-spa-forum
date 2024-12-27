@@ -26,7 +26,10 @@ class DashboardController extends Controller
         
         $authUser = auth()->user();
 
-        $myPosts = $authUser->posts()->select('id', 'title', 'updated_at')->get();
+        $myPosts1 = $authUser->posts()->paginate(10);
+
+        $myPosts = PostResource::collection($myPosts1);
+
         return inertia('Admin/Dashboard', compact('users', 'topics', 'myPosts'));
     }
 
