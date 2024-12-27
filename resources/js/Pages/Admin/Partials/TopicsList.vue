@@ -5,11 +5,13 @@
                 All Topics
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
-            <SecondaryButton class="font-black text-3xl rounded-full">+</SecondaryButton>
+            <div v-if="$page.props.auth.user">
+                <AddTopic v-if="$page.props.auth.user.is_admin" />
+            </div>
         </div>
 
 
-        <div class="flex flex-wrap gap-4 w-full">
+        <div class="flex flex-wrap gap-4 w-full h-lvh overflow-y-scroll ">
             <div v-for="(item, index) in topics" :key="index"
                 class="relative group bg-slate-900 p-8 h-40 w-full rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out">
                 <div
@@ -51,6 +53,7 @@ import { TrashIcon, PencilIcon } from '@heroicons/vue/20/solid'
 import { router } from "@inertiajs/vue3";
 // Import SweetAlert2
 import Swal from 'sweetalert2';
+import AddTopic from './AddTopic.vue';
 
 defineProps(["topics"]);
 

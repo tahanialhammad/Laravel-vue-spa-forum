@@ -15,10 +15,10 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $posts = Post::with(['user', 'topic'])
-            ->latest()
+        $posts = Post::latest()
             ->take(3)
             ->get();
+
         $topics = Topic::take(6)->get();
         return inertia('Home/Welcome', [
             'posts' => PostResource::collection($posts),

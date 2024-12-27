@@ -17,8 +17,8 @@
                         <MyPostsList :myPosts="myPosts" />
                     </div>
                 </div>
-                <div class="w-1/3 ps-8">
-                    <TopicsList :topics="topics"/>
+                <div class="w-1/3 ps-12">
+                    <TopicsList :topics="topics" />
                 </div>
             </div>
         </Container>
