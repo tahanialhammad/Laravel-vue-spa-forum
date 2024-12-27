@@ -62,20 +62,21 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->newtopic) {
-            $newTopic = Topic::create([
-                'slug' => Str::slug($request->newtopic),
-                'name' => $request->newtopic,
-                'description' => $request->newtopic,
-            ]);
-            $topicId = $newTopic->id;  // Get the ID of the newly created topic
-        } else {
-            // Use the existing topic_id if no new topic is provided
-            $topicId = $request->topic_id;
-        }
+        // if ($request->newtopic) {
+        //     $newTopic = Topic::create([
+        //         'slug' => Str::slug($request->newtopic),
+        //         'name' => $request->newtopic,
+        //         'description' => $request->newtopic,
+        //     ]);
+        //     $topicId = $newTopic->id;  // Get the ID of the newly created topic
+        // } else {
+        //     // Use the existing topic_id if no new topic is provided
+        //     $topicId = $request->topic_id;
+        // }
 
         $data =  $request->validate([
             'title' => 'required|string|max:255',
+            'topic_id' => 'required|exists:topics,id',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -87,7 +88,7 @@ class PostController extends Controller
 
         $post = Post::create([
             ...$data,
-            'topic_id' => $topicId,
+            //  'topic_id' => $topicId,
             'image' => $imagePath,
             'user_id' => $request->user()->id,
         ]);

@@ -4,7 +4,6 @@
             <PageHeading>Create a Post</PageHeading>
 
             <form @submit.prevent="createPost" class="mt-6 flex">
-
                 <div class="w-3/4">
                     <div>
                         <InputLabel for="title" class="sr-only">Title</InputLabel>
@@ -36,11 +35,8 @@
                         <PrimaryButton type="submit">Create Post</PrimaryButton>
                     </div>
 
-                    <div class="mt-3">
-                        <div class="flex justify-between items-center mb-2">
-                            <InputLabel for="topic_id">Select a Topic</InputLabel>
-                            <PrimaryButton>+</PrimaryButton>
-                        </div>
+                    <div class="mt-3">    
+                        <InputLabel for="topic_id">Select a Topic</InputLabel>
                         <select v-model="form.topic_id" id="topic_id"
                             class="mt-1 w-full rounded-md text-black border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500">
                             <option v-for="topic in topics" :key="topic.id" :value="topic.id">
@@ -48,10 +44,6 @@
                             </option>
                         </select>
                         <InputError :message="form.errors.topic_id" class="mt-1" />
-
-                        <TextInput id="newtopic" class="w-full my-4" v-model="form.newtopic"
-                            placeholder="Add new topic" />
-
                     </div>
 
                     <div class="mt-3">
@@ -63,9 +55,7 @@
                         <img v-if="imagePreview" :src="imagePreview" alt="Image preview"
                             class="mt-2 w-full rounded-md" />
                     </div>
-
                 </div>
-
             </form>
         </Container>
     </AppLayout>
@@ -104,7 +94,6 @@ const form = useForm({
     topic_id: props.topics[0]?.id || null,
     body: "",
     image: null,
-    newtopic: "",
 });
 
 const createPost = () => form.post(route('posts.store'));

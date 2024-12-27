@@ -5,7 +5,9 @@
                 All Topics
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
-            <SecondaryButton class="font-black text-3xl rounded-full">+</SecondaryButton>
+            <div v-if="$page.props.auth.user">
+                <AddTopic v-if="$page.props.auth.user.is_admin" />
+            </div>
         </div>
 
 
@@ -51,6 +53,7 @@ import { TrashIcon, PencilIcon } from '@heroicons/vue/20/solid'
 import { router } from "@inertiajs/vue3";
 // Import SweetAlert2
 import Swal from 'sweetalert2';
+import AddTopic from './AddTopic.vue';
 
 defineProps(["topics"]);
 

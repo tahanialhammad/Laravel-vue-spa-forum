@@ -1,4 +1,10 @@
 <template>
+        <div class="relative mb-8">
+            <h1 class="relative font-black text-4xl z-10 uppercase">
+                All Users
+            </h1>
+            <GradientCircle class="absolute -top-8 -left-10 z-0" />
+        </div>
 
     <div class="h-64 overflow-y-scroll">
         <table class="min-w-full bg-slate-900 text-slate-200 rounded-3xl">
@@ -39,6 +45,8 @@
 
 </template>
 <script setup>
+import GradientCircle from '@/Components/Svg/GradientCircle.vue';
+
 defineProps(["users"]);
 
 </script>

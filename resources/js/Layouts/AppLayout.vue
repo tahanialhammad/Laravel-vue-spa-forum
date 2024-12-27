@@ -52,8 +52,6 @@ const menu = [
         url: route('posts.create'),
         route: 'posts.create',
         when: () => usePage().props.auth.user,
-        //account weet w week to can creat posts in policy
-        //   when: () => usePage().props.permissions.create_posts,
     },
     {
         name: "Contact",

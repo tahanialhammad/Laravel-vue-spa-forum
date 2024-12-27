@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class TopicController extends Controller
 {
@@ -28,7 +30,12 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Topic::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+        ]);
+        return back()->with('message', 'Topic added successfully!');
     }
 
     /**
