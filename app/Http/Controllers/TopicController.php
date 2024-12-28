@@ -35,7 +35,7 @@ class TopicController extends Controller
             'slug' => Str::slug($request->name),
             'description' => $request->description,
         ]);
-        return back()->with('message', 'Topic added successfully!');
+        return back()->banner('Comment deleted.');
     }
 
     /**
@@ -74,6 +74,6 @@ class TopicController extends Controller
 
         $topic->delete();
 
-        return back()->with('success', 'Topic deleted successfully!');
+        return back()->banner('Topic deleted successfully!');
     }
 }

@@ -62,20 +62,12 @@ const menu = [
         route: "contact",
     },
 ];
-//tahani
-// Get the flash message from the Inertia page props
-// const { props } = usePage();
-// const message = ref(props.flash?.message || null);
-
-//const { flash } = usePage().props;
-
-
 </script>
 
 <template>
     <div class="bg-slate-950 text-slate-100">
         <Head :title="title" />
-
+<!--A flash message in Laravel's Jetstream -->
         <Banner />
 
         <div class="min-h-screen">
@@ -422,21 +414,9 @@ const menu = [
                     </div>
                 </div>
             </nav>
-<!-- tahani -->
-            <!-- Show the flash message if available -->
-            <!-- <div v-if="message" class="text-red-500 bg-red-200 p-4 rounded-md">
-                {{ message }} hhhhhhh
-            </div>
-            <div v-if="message"
-        class="mb-4 text-sm font-bold tracking-wide border-l-4 border-red-700 text-center text-red-700 bg-red-100 px-2 py-4 rounded">
-        {{ $page.props.flash.message }} bbbbbbbb
-    </div> -->
 
- <!-- <div v-if="message">
-{{flash.message}} cccccc
- </div> -->
 
- <FlashMessages />
+ <!-- <FlashMessages /> -->
 
 
             <!-- Page Heading -->
@@ -451,6 +431,7 @@ const menu = [
                 <slot />
             </main>
         </div>
+        <!-- Confirmation alert modal. It can be used instead of Sweetalert -->
         <ConfirmationModalWrapper />
 
         <FooterSection />

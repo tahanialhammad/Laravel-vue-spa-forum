@@ -36,7 +36,7 @@
 
             <!-- Services Links -->
             <div class="w-1/5">
-                <h2 class="text-xl font-bold text-rose-500 mb-4">Services</h2>
+                <h2 class="text-xl font-bold text-rose-500 mb-4">Popular Topics</h2>
                 <ul class="list-disc pl-5 space-y-2 marker:text-rose-500">
                     <li><a href="#" class="hover:text-rose-400">Web Development</a></li>
                     <li><a href="#" class="hover:text-rose-400">UI/UX Design</a></li>
@@ -47,7 +47,7 @@
 
             <!-- Latest Articles -->
             <div class="w-1/5">
-                <h2 class="text-xl font-bold text-rose-500 mb-4">Latest Articles</h2>
+                <h2 class="text-xl font-bold text-rose-500 mb-4">More information</h2>
                 <!-- You can add article links here in the future -->
             </div>
         </div>
