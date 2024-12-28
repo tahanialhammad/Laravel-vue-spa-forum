@@ -33,6 +33,10 @@ class DashboardController extends Controller
 
     private function showUserDashboard()
     {
-        return inertia('User/Dashboard');
+        $authUser = auth()->user();
+
+        $myPosts = PostResource::collection( $authUser->posts()->latest()->get());
+
+        return inertia('User/Dashboard', compact('myPosts'));
     }
 }

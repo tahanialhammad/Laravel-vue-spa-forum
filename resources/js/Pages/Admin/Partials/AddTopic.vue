@@ -68,6 +68,7 @@ const createTopic = () => {
     form.post(route('topics.store'), {
         onFinish: (response) => {
             if (Object.keys(form.errors).length === 0) {
+                form.reset(); // Reset the form fields
                 closeModal();
             }
         },

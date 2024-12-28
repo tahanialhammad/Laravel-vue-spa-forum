@@ -1,13 +1,6 @@
 <template>
-       <div class="relative mb-8 flex justify-between w-full">
-            <h1 class="relative font-black text-4xl z-10 uppercase">
-                My Posts
-            </h1>
-            <GradientCircle class="absolute -top-8 -left-10 z-0" />
-            <Link  :href="route('posts.create')"  class="font-black text-3xl rounded-full">+</Link>
-        </div>
-
-    <div class="h-64 overflow-y-scroll">
+    
+    <div class="max-h-64 overflow-y-scroll">
         <table class="min-w-full bg-slate-900 text-slate-200 rounded-3xl">
             <thead class=" border-b">
                 <tr>
@@ -49,8 +42,8 @@
 </template>
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { EyeIcon } from "@heroicons/vue/20/solid/index.js";
-import GradientCircle from "@/Components/Svg/GradientCircle.vue";
+import { HeartIcon, EyeIcon } from "@heroicons/vue/20/solid/index.js";
+
 
 defineProps(["myPosts"]);
 

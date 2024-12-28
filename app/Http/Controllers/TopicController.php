@@ -74,6 +74,6 @@ class TopicController extends Controller
 
         $topic->delete();
 
-        return back()->with('message', 'Topic deleted successfully!');
+        return back()->with('success', 'Topic deleted successfully!');
     }
 }
