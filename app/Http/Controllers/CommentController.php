@@ -24,7 +24,6 @@ class CommentController extends Controller
         ]);
 
         //Redriect with slug
-
         return redirect($post->showRoute())
             ->banner('Comment added.');
     }

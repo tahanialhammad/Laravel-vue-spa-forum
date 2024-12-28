@@ -12,21 +12,22 @@ watchEffect(async () => {
     style.value = page.props.jetstream.flash?.bannerStyle || 'success';
     message.value = page.props.jetstream.flash?.banner || '';
     show.value = true;
-// setTimeout to be disabeer after 5 min, and then clear timeout
+// Set a wait timeout to disappear after 5 minutes, then clear it.
+
     clearTimeout(timeout.value);
     timeout.value = setTimeout(() => show.value = false, 5000);
 });
-//and then clear timeout
+//Clear timeout
 onUnmounted(() => clearTimeout(timeout.value));
 </script>
 
 <template>
     <div class="sticky top-0 z-40">
-        <div v-if="show && message" :class="{ 'bg-rose-500': style == 'success', 'bg-rose-700': style == 'danger' }">
+        <div v-if="show && message" :class="{ 'bg-green-500': style == 'success', 'bg-green-700': style == 'danger' }">
             <div class="max-w-screen-xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between flex-wrap">
                     <div class="w-0 flex-1 flex items-center min-w-0">
-                        <span class="flex p-2 rounded-lg" :class="{ 'bg-rose-600': style == 'success', 'bg-red-600': style == 'danger' }">
+                        <span class="flex p-2 rounded-lg" :class="{ 'bg-green-600': style == 'success', 'bg-rose-600': style == 'danger' }">
                             <svg v-if="style == 'success'" class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -45,7 +46,7 @@ onUnmounted(() => clearTimeout(timeout.value));
                         <button
                             type="button"
                             class="-mr-1 flex p-2 rounded-md focus:outline-none sm:-mr-2 transition"
-                            :class="{ 'hover:bg-rose-600 focus:bg-rose-600': style == 'success', 'hover:bg-red-600 focus:bg-red-600': style == 'danger' }"
+                            :class="{ 'hover:bg-green-600 focus:bg-green-600': style == 'success', 'hover:bg-rose-600 focus:bg-rose-600': style == 'danger' }"
                             aria-label="Dismiss"
                             @click.prevent="show = false"
                         >

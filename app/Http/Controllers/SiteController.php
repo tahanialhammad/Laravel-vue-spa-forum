@@ -8,8 +8,6 @@ use App\Models\Post;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-// use App\Mail\ContactMe;
-// use App\Mail\Contact;
 
 class SiteController extends Controller
 {
@@ -38,12 +36,9 @@ class SiteController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Mail::raw('it work', function($message){
-        //     $message->to('tahanina@yahoo.com')->subject($data['subject']);
-        // });
-
         Mail::to('tahanina@yahoo.com')->send(new contactUs($data));
 
-        return redirect()->route('contact')->with('message', 'Email sent');
+        return redirect()->route('contact')
+        ->banner("Your email has been sent. We'll get back to you soon!.");
     }
 }

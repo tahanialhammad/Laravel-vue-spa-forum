@@ -93,7 +93,8 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
         ]);
         // use slug 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully!');
+        return redirect()->route('posts.index')
+        ->banner('Post created successfully!');
     }
     /**
      * Display the specified resource.
