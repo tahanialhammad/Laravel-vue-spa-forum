@@ -9,7 +9,6 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import ConfirmationModalWrapper from "@/Components/ConfirmationModalWrapper.vue";
 import FooterSection from "@/Components/FooterSection.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import  FlashMessages from "@/Components/FlashMessages.vue";
 
 defineProps({
     title: String,
@@ -66,8 +65,9 @@ const menu = [
 
 <template>
     <div class="bg-slate-950 text-slate-100">
+
         <Head :title="title" />
-<!--A flash message in Laravel's Jetstream -->
+        <!--A flash message in Laravel's Jetstream -->
         <Banner />
 
         <div class="min-h-screen">
@@ -79,20 +79,15 @@ const menu = [
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('welcome')">
-                                    <ApplicationLogo class="block h-9 w-auto" />
+                                <ApplicationLogo class="block h-9 w-auto" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div
-                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
-                            >
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <template v-for="item in menu" :key="item.name">
-                                    <NavLink
-                                        v-if="item.when ? item.when() : true"
-                                        :href="item.url"
-                                        :active="route().current(item.route)"
-                                    >
+                                    <NavLink v-if="item.when ? item.when() : true" :href="item.url"
+                                        :active="route().current(item.route)">
                                         {{ item.name }}
                                     </NavLink>
                                 </template>
@@ -101,54 +96,30 @@ const menu = [
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
-                            <div
-                                v-if="$page.props.auth.user"
-                                class="ml-3 relative"
-                            >
+                            <div v-if="$page.props.auth.user" class="ml-3 relative">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
-                                        <button
-                                            v-if="
-                                                $page.props.jetstream
-                                                    .managesProfilePhotos
-                                            "
-                                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-slate-300 transition"
-                                        >
-                                            <img
-                                                class="h-8 w-8 rounded-full object-cover"
-                                                :src="
-                                                    $page.props.auth.user
-                                                        .profile_photo_url
-                                                "
-                                                :alt="
-                                                    $page.props.auth.user.name
-                                                "
-                                            />
+                                        <button v-if="
+                                            $page.props.jetstream
+                                                .managesProfilePhotos
+                                        "
+                                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-slate-300 transition">
+                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user
+                                                    .profile_photo_url
+                                                " :alt="$page.props.auth.user.name
+                                                    " />
                                         </button>
 
-                                        <span
-                                            v-else
-                                            class="inline-flex rounded-md"
-                                        >
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-slate-500 bg-white hover:text-slate-700 focus:outline-none focus:bg-slate-50 active:bg-slate-50 transition ease-in-out duration-150"
-                                            >
+                                        <span v-else class="inline-flex rounded-md">
+                                            <button type="button"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-slate-500 bg-white hover:text-slate-700 focus:outline-none focus:bg-slate-50 active:bg-slate-50 transition ease-in-out duration-150">
                                                 {{ $page.props.auth.user.name }}
 
-                                                <svg
-                                                    class="ml-2 -mr-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke-width="1.5"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                    />
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                                 </svg>
                                             </button>
                                         </span>
@@ -156,31 +127,22 @@ const menu = [
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div
-                                            class="block px-4 py-2 text-xs text-slate-400"
-                                        >
+                                        <div class="block px-4 py-2 text-xs text-slate-400">
                                             Manage Account
                                         </div>
 
-                                        <DropdownLink
-                                            :href="route('profile.show')"
-                                        >
+                                        <DropdownLink :href="route('profile.show')">
                                             Profile
                                         </DropdownLink>
 
-                                        <DropdownLink
-                                            v-if="
-                                                $page.props.jetstream
-                                                    .hasApiFeatures
-                                            "
-                                            :href="route('api-tokens.index')"
-                                        >
+                                        <DropdownLink v-if="
+                                            $page.props.jetstream
+                                                .hasApiFeatures
+                                        " :href="route('api-tokens.index')">
                                             API Tokens
                                         </DropdownLink>
 
-                                        <div
-                                            class="border-t border-slate-200"
-                                        />
+                                        <div class="border-t border-slate-200" />
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
@@ -193,18 +155,14 @@ const menu = [
                             </div>
 
                             <template v-else>
-                                <Link
-                                    :href="route('login')"
-                                    class="rounded-full px-6 py-2 me-2 text-white/70 ring-1 ring-rose-700 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                >
-                                    Log in
+                                <Link :href="route('login')"
+                                    class="rounded-full px-6 py-2 me-2 text-white/70 ring-1 ring-rose-700 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                Log in
                                 </Link>
 
-                                <Link
-                                    :href="route('register')"
-                                    class="rounded-full px-6 py-2 text-white/70 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                >
-                                    Register
+                                <Link :href="route('register')"
+                                    class="rounded-full px-6 py-2 text-white/70 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                Register
                                 </Link>
                             </template>
                         </div>
@@ -215,37 +173,21 @@ const menu = [
                                 class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:bg-slate-100 focus:text-slate-500 transition duration-150 ease-in-out"
                                 @click="
                                     showingNavigationDropdown =
-                                        !showingNavigationDropdown
-                                "
-                            >
-                                <svg
-                                    class="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        :class="{
-                                            hidden: showingNavigationDropdown,
-                                            'inline-flex':
-                                                !showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        :class="{
-                                            hidden: !showingNavigationDropdown,
-                                            'inline-flex':
-                                                showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
+                                    !showingNavigationDropdown
+                                    ">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{
+                                        hidden: showingNavigationDropdown,
+                                        'inline-flex':
+                                            !showingNavigationDropdown,
+                                    }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{
+                                        hidden: !showingNavigationDropdown,
+                                        'inline-flex':
+                                            showingNavigationDropdown,
+                                    }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
@@ -253,47 +195,28 @@ const menu = [
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div
-                    :class="{
-                        block: showingNavigationDropdown,
-                        hidden: !showingNavigationDropdown,
-                    }"
-                    class="sm:hidden"
-                >
+                <div :class="{
+                    block: showingNavigationDropdown,
+                    hidden: !showingNavigationDropdown,
+                }" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                        >
+                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
-                    <div
-                        v-if="$page.props.auth.user"
-                        class="pt-4 pb-1 border-t border-slate-200"
-                    >
+                    <div v-if="$page.props.auth.user" class="pt-4 pb-1 border-t border-slate-200">
                         <div class="flex items-center px-4">
-                            <div
-                                v-if="
-                                    $page.props.jetstream.managesProfilePhotos
-                                "
-                                class="shrink-0 mr-3"
-                            >
-                                <img
-                                    class="h-10 w-10 rounded-full object-cover"
-                                    :src="
-                                        $page.props.auth.user.profile_photo_url
-                                    "
-                                    :alt="$page.props.auth.user.name"
-                                />
+                            <div v-if="
+                                $page.props.jetstream.managesProfilePhotos
+                            " class="shrink-0 mr-3">
+                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url
+                                    " :alt="$page.props.auth.user.name" />
                             </div>
 
                             <div>
-                                <div
-                                    class="font-medium text-base text-slate-800"
-                                >
+                                <div class="font-medium text-base text-slate-800">
                                     {{ $page.props.auth.user.name }}
                                 </div>
                                 <div class="font-medium text-sm text-slate-500">
@@ -303,18 +226,12 @@ const menu = [
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink
-                                :href="route('profile.show')"
-                                :active="route().current('profile.show')"
-                            >
+                            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
                                 Profile
                             </ResponsiveNavLink>
 
-                            <ResponsiveNavLink
-                                v-if="$page.props.jetstream.hasApiFeatures"
-                                :href="route('api-tokens.index')"
-                                :active="route().current('api-tokens.index')"
-                            >
+                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures"
+                                :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
                                 API Tokens
                             </ResponsiveNavLink>
 
@@ -326,82 +243,53 @@ const menu = [
                             </form>
 
                             <!-- Team Management -->
-                            <template
-                                v-if="$page.props.jetstream.hasTeamFeatures"
-                            >
+                            <template v-if="$page.props.jetstream.hasTeamFeatures">
                                 <div class="border-t border-slate-200" />
 
-                                <div
-                                    class="block px-4 py-2 text-xs text-slate-400"
-                                >
+                                <div class="block px-4 py-2 text-xs text-slate-400">
                                     Manage Team
                                 </div>
 
                                 <!-- Team Settings -->
-                                <ResponsiveNavLink
-                                    :href="
-                                        route(
-                                            'teams.show',
-                                            $page.props.auth.user.current_team
-                                        )
-                                    "
-                                    :active="route().current('teams.show')"
-                                >
+                                <ResponsiveNavLink :href="route(
+                                    'teams.show',
+                                    $page.props.auth.user.current_team
+                                )
+                                    " :active="route().current('teams.show')">
                                     Team Settings
                                 </ResponsiveNavLink>
 
-                                <ResponsiveNavLink
-                                    v-if="$page.props.jetstream.canCreateTeams"
-                                    :href="route('teams.create')"
-                                    :active="route().current('teams.create')"
-                                >
+                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams"
+                                    :href="route('teams.create')" :active="route().current('teams.create')">
                                     Create New Team
                                 </ResponsiveNavLink>
 
                                 <!-- Team Switcher -->
-                                <template
-                                    v-if="
-                                        $page.props.auth.user.all_teams.length >
-                                        1
-                                    "
-                                >
+                                <template v-if="
+                                    $page.props.auth.user.all_teams.length >
+                                    1
+                                ">
                                     <div class="border-t border-slate-200" />
 
-                                    <div
-                                        class="block px-4 py-2 text-xs text-slate-400"
-                                    >
+                                    <div class="block px-4 py-2 text-xs text-slate-400">
                                         Switch Teams
                                     </div>
 
-                                    <template
-                                        v-for="team in $page.props.auth.user
-                                            .all_teams"
-                                        :key="team.id"
-                                    >
-                                        <form
-                                            @submit.prevent="switchToTeam(team)"
-                                        >
+                                    <template v-for="team in $page.props.auth.user
+                                        .all_teams" :key="team.id">
+                                        <form @submit.prevent="switchToTeam(team)">
                                             <ResponsiveNavLink as="button">
                                                 <div class="flex items-center">
-                                                    <svg
-                                                        v-if="
-                                                            team.id ==
-                                                            $page.props.auth
-                                                                .user
-                                                                .current_team_id
-                                                        "
-                                                        class="mr-2 h-5 w-5 text-green-400"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                    >
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                        />
+                                                    <svg v-if="
+                                                        team.id ==
+                                                        $page.props.auth
+                                                            .user
+                                                            .current_team_id
+                                                    " class="mr-2 h-5 w-5 text-green-400"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                     </svg>
                                                     <div>{{ team.name }}</div>
                                                 </div>
@@ -414,10 +302,6 @@ const menu = [
                     </div>
                 </div>
             </nav>
-
-
- <!-- <FlashMessages /> -->
-
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="shadow">
