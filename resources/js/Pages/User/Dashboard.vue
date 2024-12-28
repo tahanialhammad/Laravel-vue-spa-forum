@@ -1,11 +1,11 @@
 <template>
     <AppLayout title="Dashboard">
-        <Container>
-            <template #header>
+        <template #header>
                 <h2 class="font-semibold text-xl text-slate-00 leading-tight">
                     User Dashboard
                 </h2>
             </template>
+        <Container>
             <div class="relative mb-8 flex justify-between w-full">
             <h1 class="relative font-black text-4xl z-10 uppercase">
                 My Posts

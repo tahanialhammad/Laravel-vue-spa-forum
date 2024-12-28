@@ -4,7 +4,7 @@
                 My Posts
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
-            <SecondaryButton  :href="route('posts.create')"  class="font-black text-3xl rounded-full">+</SecondaryButton>
+            <Link  :href="route('posts.create')"  class="font-black text-3xl rounded-full">+</Link>
         </div>
 
     <div class="h-64 overflow-y-scroll">
@@ -49,10 +49,8 @@
 </template>
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { HeartIcon, EyeIcon } from "@heroicons/vue/20/solid/index.js";
+import { EyeIcon } from "@heroicons/vue/20/solid/index.js";
 import GradientCircle from "@/Components/Svg/GradientCircle.vue";
-import SecondaryButton from "@/Components/SecondaryButton.vue";
-
 
 defineProps(["myPosts"]);
 

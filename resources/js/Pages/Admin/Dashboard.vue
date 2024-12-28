@@ -1,11 +1,12 @@
 <template>
     <AppLayout title="Dashboard">
-        <Container>
-            <template #header>
+        <template #header>
                 <h2 class="font-semibold text-xl text-slate-00 leading-tight">
-                    admmin Dashboard
+                    Admin Dashboard
                 </h2>
             </template>
+            
+        <Container>     
             <div class="flex">
                 <div class="w-2/3 flex flex-col gap-8">
                     <div>
