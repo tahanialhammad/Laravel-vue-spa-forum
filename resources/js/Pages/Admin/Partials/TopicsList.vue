@@ -47,7 +47,6 @@
 </template>
 
 <script setup>
-import SecondaryButton from '@/Components/SecondaryButton.vue';
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 import { TrashIcon, PencilIcon } from '@heroicons/vue/20/solid'
 import { router } from "@inertiajs/vue3";
@@ -56,8 +55,6 @@ import Swal from 'sweetalert2';
 import AddTopic from './AddTopic.vue';
 
 defineProps(["topics"]);
-
-
 
 const confirmDelete = (item) => {
     // Use SweetAlert2 for the confirmation

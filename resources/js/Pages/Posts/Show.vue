@@ -1,36 +1,42 @@
 <template>
-    <!-- good for SEO pushed url wiht slug into html head, rel is relationalship -->
-
+    <!-- Good for SEO: Push the URL with a slug into the HTML head. -->
     <Head>
         <link rel="canonical" :href="post.routes.show" />
     </Head>
 
     <AppLayout :title="post.title">
         <Container>
-
-
             <div class="flex">
                 <div class="w-3/4">
-                    <!-- <img :src="post.image" :alt="post.title" class="w-full rounded-lg shadow-md" /> -->
-
                     <img v-if="post.image" :src="post.image ? `/${post.image}` : ''" :alt="post.title"
                         class="w-full max-h-80 object-cover rounded-3xl shadow-md mb-8" />
 
-
                     <Pill :href="route('posts.index', { topic: post.topic.slug })">{{ post.topic.name }}</Pill>
 
-                    <!-- <h1 class="text-2xl font-bold">{{ post.title }}</h1> -->
-                    <PageHeading class="mt-2">{{ post.title }}</PageHeading>
+                    <PageHeading class="mt-2 flex justify-between">
+                        {{ post.title }}
+                        <div class="text-rose-500 font-bold">
+                            {{ post.likes_count }}
+                            <HeartIcon class="w-4 h-4 inline-block" />
+                        </div>
+                    </PageHeading>
 
                     <span class="block mt-1 text-sm text-slate-300">{{ formattedDate }} by {{ post.user.name }}</span>
 
-                    <div class="mt-4">
-                        <span class="text-rose-500 font-bold">{{ post.likes_count }} likes</span>
-                    </div>
+
+
+                    <button  v-if="post.can.delete"  method="delete" as="button" type="button" class="text-red-600 hover:text-red-800"
+                            @click.prevent="confirmDelete(post)">
+                         delete post
+                        </button>
+
+
+
+
+
+
 
                     <div class="mt-4">
-                        <span class="text-rose-500 font-bold">{{ post.likes_count }} likes</span>
-
                         <!-- only login user can see that btn -->
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
@@ -46,9 +52,6 @@
                         </div>
                     </div>
 
-                    <!-- <article class="mt-6">
-                <pre class="whitespace-pre-wrap font-sans">{{ post.body }}</pre>
-            </article> -->
                     <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
                     </article>
 
@@ -59,7 +62,6 @@
                             @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()" class="mt-4">
                             <div>
                                 <InputLabel for="body" class="sr-only">Comment</InputLabel>
-                                <!-- <TextArea ref="commentTextAreaRef" id="body" v-model="commentForm.body" rows="4" placeholder="Speak your mind Spock…"/> -->
                                 <MarkdownEditor ref="commentTextAreaRef" id="body" v-model="commentForm.body"
                                     placeholder="Speak your mind Spock…" editorClass="!min-h-[100px]" />
                                 <InputError :message="commentForm.errors.body" class="mt-1" />
@@ -78,16 +80,12 @@
                         </ul>
 
                         <Pagination :meta="comments.meta" :only="['comments']" />
-                        <!-- fix pagination with flash message bug , we do that in compoponent  -->
-                        <!-- <Pagination :meta="comments.meta" :only="['comments', 'jetstream']"/> -->
-
                     </div>
                 </div>
                 <div class="w-1/4 ms-8 flex flex-col gap-5">
                     <SideBaar :recentPosts="recentPosts" />
                 </div>
             </div>
-
         </Container>
     </AppLayout>
 </template>
@@ -110,6 +108,7 @@ import PageHeading from "@/Components/PageHeading.vue";
 import Pill from "@/Components/Pill.vue";
 import { HandThumbUpIcon, HandThumbDownIcon } from "@heroicons/vue/20/solid/index.js";
 import SideBaar from "./Partials/SideBaar.vue";
+import { HeartIcon } from "@heroicons/vue/20/solid/index.js";
 
 
 const props = defineProps(['post', 'comments', 'recentPosts']);
@@ -157,16 +156,6 @@ const updateComment = async () => {
     });
 };
 
-// const deleteComment = async (commentId) => {
-//     if (! await confirmation('Are you sure you want to delete this comment?')) {
-//         return;
-//     }
-
-//     router.delete(route('comments.destroy', {comment: commentId, page: props.comments.meta.current_page}), {
-//         preserveScroll: true,
-//     });
-// };
-
 //fix bug whene delete last commnts on paginathion 
 const deleteComment = async (commentId) => {
     if (
@@ -186,5 +175,36 @@ const deleteComment = async (commentId) => {
             preserveScroll: true,
         },
     );
+};
+
+
+
+
+
+
+
+
+
+import Swal from 'sweetalert2';
+
+const confirmDelete = (post) => {
+    // Use SweetAlert2 for the confirmation
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `Do you want to delete the post "${post.title}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.delete(route('posts.destroy', post), {
+                preserveScroll: true,
+            });
+        } else {
+            Swal.fire('Cancelled', 'The topic was not deleted.', 'info');
+        }
+    });
 };
 </script>
