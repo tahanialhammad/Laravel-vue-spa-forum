@@ -20,7 +20,6 @@
                     <SearchForm :query="query" />
                 </div>
 
-
                 <p v-if="selectedTopic" class="mt-1 text-sm text-gray-600">
                     {{ selectedTopic.description }}
                 </p>
@@ -33,7 +32,7 @@
                         </Pill>
                     </li>
                     <li v-for="topic in topics" :key="topic.id">
-                        <!-- to seve search by topic -->
+                        <!-- to save search by topic -->
                         <Pill :href="route('posts.index', { topic: topic.slug, query: searchForm.query })"
                             :filled="topic.id === selectedTopic?.id">
                             {{ topic.name }}
