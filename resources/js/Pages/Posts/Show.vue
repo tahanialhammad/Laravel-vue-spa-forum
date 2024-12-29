@@ -23,6 +23,19 @@
 
                     <span class="block mt-1 text-sm text-slate-300">{{ formattedDate }} by {{ post.user.name }}</span>
 
+
+
+                    <button  v-if="post.can.delete"  method="delete" as="button" type="button" class="text-red-600 hover:text-red-800"
+                            @click.prevent="confirmDelete(post)">
+                         delete post
+                        </button>
+
+
+
+
+
+
+
                     <div class="mt-4">
                         <!-- only login user can see that btn -->
                         <div v-if="$page.props.auth.user" class="mt-2">
@@ -143,16 +156,6 @@ const updateComment = async () => {
     });
 };
 
-// const deleteComment = async (commentId) => {
-//     if (! await confirmation('Are you sure you want to delete this comment?')) {
-//         return;
-//     }
-
-//     router.delete(route('comments.destroy', {comment: commentId, page: props.comments.meta.current_page}), {
-//         preserveScroll: true,
-//     });
-// };
-
 //fix bug whene delete last commnts on paginathion 
 const deleteComment = async (commentId) => {
     if (
@@ -172,5 +175,36 @@ const deleteComment = async (commentId) => {
             preserveScroll: true,
         },
     );
+};
+
+
+
+
+
+
+
+
+
+import Swal from 'sweetalert2';
+
+const confirmDelete = (post) => {
+    // Use SweetAlert2 for the confirmation
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `Do you want to delete the post "${post.title}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.delete(route('posts.destroy', post), {
+                preserveScroll: true,
+            });
+        } else {
+            Swal.fire('Cancelled', 'The topic was not deleted.', 'info');
+        }
+    });
 };
 </script>
