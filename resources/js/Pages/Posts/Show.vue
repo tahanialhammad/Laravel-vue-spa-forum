@@ -1,5 +1,6 @@
 <template>
     <!-- Good for SEO: Push the URL with a slug into the HTML head. -->
+
     <Head>
         <link rel="canonical" :href="post.routes.show" />
     </Head>
@@ -15,28 +16,20 @@
 
                     <PageHeading class="mt-2 flex justify-between">
                         {{ post.title }}
-                        <div class="text-rose-500 font-bold">
-                            {{ post.likes_count }}
-                            <HeartIcon class="w-4 h-4 inline-block" />
-                        </div>
+
+                        <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
+                            @click.prevent="confirmDelete(post)">
+                            delete post
+                        </PrimaryButton>
+
                     </PageHeading>
 
                     <span class="block mt-1 text-sm text-slate-300">{{ formattedDate }} by {{ post.user.name }}</span>
 
+                    <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
+                    </article>
 
-
-                    <button  v-if="post.can.delete"  method="delete" as="button" type="button" class="text-red-600 hover:text-red-800"
-                            @click.prevent="confirmDelete(post)">
-                         delete post
-                        </button>
-
-
-
-
-
-
-
-                    <div class="mt-4">
+                    <div class="mt-4 flex justify-between items-center ">
                         <!-- only login user can see that btn -->
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
@@ -50,11 +43,12 @@
                             Unlike Post
                             </Link>
                         </div>
+
+                        <div class="text-rose-500 font-bold">
+                            {{ post.likes_count }}
+                            <HeartIcon class="w-4 h-4 inline-block" />
+                        </div>
                     </div>
-
-                    <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
-                    </article>
-
                     <div class="mt-12">
                         <h2 class="text-xl font-semibold">Comments</h2>
 

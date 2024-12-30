@@ -137,9 +137,23 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
-        //
+        //authorize in resource & policy
+        Gate::authorize('update', $post);
+dd('ff');
+        $data = $request->validate(
+            [
+            'title' => 'required|string|max:255',
+            'topic_id' => 'required|exists:topics,id',
+            'body' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            ]
+        );
+
+        $post->update($data);
+        return redirect($post->showRoute(['page' => $request->query('page')]))
+            ->banner('Post updated.');
     }
 
     /**
@@ -151,9 +165,9 @@ class PostController extends Controller
             abort(403);
         }
 
-        dd('dd');
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+        return redirect()->route('posts.index')
+        ->banner('Post deleted successfully.');
     }
 }
