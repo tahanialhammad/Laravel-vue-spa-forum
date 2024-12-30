@@ -7,8 +7,8 @@
             </template>
             
         <Container>     
-            <div class="flex">
-                <div class="w-2/3 flex flex-col gap-8">
+            <div class="md:flex">
+                <div class="md:w-2/3 flex flex-col gap-8">
                     <div>
                         <UserTable :users="users.data" />
                         <!-- Pagination Controls -->
@@ -18,7 +18,7 @@
                         <MyPostsList :myPosts="myPosts" />
                     </div>
                 </div>
-                <div class="w-1/3 ps-12">
+                <div class="mt-8 md:mt-2 md:w-1/3 ps-12">
                     <TopicsList :topics="topics" />
                 </div>
             </div>

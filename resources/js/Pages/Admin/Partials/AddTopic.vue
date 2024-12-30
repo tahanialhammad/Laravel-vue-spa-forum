@@ -46,8 +46,6 @@ import TextArea from "@/Components/TextArea.vue";
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 
-
-
 const showModal = ref(false);
 
 const openModal = () => {
