@@ -9,7 +9,7 @@
         </div>
 
 
-        <div class="grid grid-cols-3 gap-4 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
             <div v-for="(item, index) in topics" :key="index"
                 class="relative group bg-slate-900 py-10 px-20 h-40 rounded-3xl flex items-center bg-cover bg-center transition-all duration-300 ease-in-out"
                 :style="{ backgroundImage: `url(${item.image})` }">

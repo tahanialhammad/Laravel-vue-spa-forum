@@ -28,8 +28,8 @@
 
                     <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
                     </article>
-
-                    <div class="mt-4 flex justify-between items-center ">
+                    
+      <div class="mt-4 flex justify-between items-center ">
                         <!-- only login user can see that btn -->
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
@@ -170,13 +170,6 @@ const deleteComment = async (commentId) => {
         },
     );
 };
-
-
-
-
-
-
-
 
 
 import Swal from 'sweetalert2';
