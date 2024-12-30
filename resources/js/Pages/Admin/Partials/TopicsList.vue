@@ -26,14 +26,18 @@
                         <!-- <Link preserve-scroll :href="route('topics.destroy', ['item', item.id])" method="delete">
                         x
                         </Link> -->
+                        <div v-if="$page.props.auth.user">
+
+                            <button v-if="$page.props.auth.user.is_admin" method="delete" as="button" type="button"
+                                class="text-red-600 hover:text-red-800" @click.prevent="confirmDelete(item)">
+                                <TrashIcon class="size-4 inline-block mr-1" />
+                            </button>
 
 
-                        <button method="delete" as="button" type="button" class="text-red-600 hover:text-red-800"
-                            @click.prevent="confirmDelete(item)">
-                            <TrashIcon class="size-4 inline-block mr-1" />
-                        </button>
+                            <EditTopic v-if="$page.props.auth.user.is_admin" :item="item" />
+                        </div>
 
-                        <PencilIcon class="size-4 inline-block mr-1" />
+
                         <div class="font-black text-3xl">
                             {{ item.post_count }}
                         </div>
@@ -53,6 +57,7 @@ import { router } from "@inertiajs/vue3";
 // Import SweetAlert2
 import Swal from 'sweetalert2';
 import AddTopic from './AddTopic.vue';
+import EditTopic from './EditTopic.vue';
 
 defineProps(["topics"]);
 
