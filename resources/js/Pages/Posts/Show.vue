@@ -17,6 +17,9 @@
                     <PageHeading class="mt-2 flex justify-between">
                         {{ post.title }}
 
+                        <Link v-if="post.can.update" :href="route('posts.edit', post.id)" class="font-black text-3xl rounded-full">edit</Link>
+
+
                         <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
                             @click.prevent="confirmDelete(post)">
                             delete post

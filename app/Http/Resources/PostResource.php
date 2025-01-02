@@ -37,6 +37,7 @@ class PostResource extends JsonResource
                 'show' => $this->showRoute(),
             ],
             'can' => [
+                'update' => $request->user()?->can('update', $this->resource),
                 'delete' => $request->user()?->can('delete', $this->resource),
                 'like' => $this->when($this->withLikePermission, fn () => $request->user()?->can('create', [Like::class, $this->resource])),
             ],
