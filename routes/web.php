@@ -37,7 +37,7 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Posts
-    Route::resource('posts', PostController::class)->only(['create', 'store', 'destroy']);
+    Route::resource('posts', PostController::class)->only(['create', 'store', 'destroy', 'edit', 'update']);
   // Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
     // Comments

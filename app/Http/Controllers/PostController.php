@@ -131,7 +131,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return inertia('Posts/Edit', [
+            'post' => $post,
+            'topics' => fn() => TopicResource::collection(Topic::all()),
+        ]);
     }
 
     /**
@@ -141,7 +144,7 @@ class PostController extends Controller
     {
         //authorize in resource & policy
         Gate::authorize('update', $post);
-dd('ff');
+
         $data = $request->validate(
             [
             'title' => 'required|string|max:255',
