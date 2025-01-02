@@ -54,6 +54,7 @@ const openModal = () => {
 
 const closeModal = () => {
     showModal.value = false;
+    form.reset(); // Reset form on close
 };
 
 
@@ -66,7 +67,6 @@ const createTopic = () => {
     form.post(route('topics.store'), {
         onFinish: (response) => {
             if (Object.keys(form.errors).length === 0) {
-                form.reset(); // Reset the form fields
                 closeModal();
             }
         },

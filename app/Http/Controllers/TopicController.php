@@ -57,10 +57,20 @@ class TopicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $topic = Topic::findOrFail($id);
+    
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+    
+        $topic->update($validatedData);
+    
+        return back()->banner('Topic updated successfully!');    
     }
+    
 
     /**
      * Remove the specified resource from storage.
