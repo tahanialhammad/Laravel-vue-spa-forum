@@ -102,5 +102,5 @@ const form = useForm({
     image: null,  
 });
 
-const createPost = () => form.post(route('posts.update', props.post.id));  
+const createPost = () => form.put(route('posts.update', props.post.id));  
 </script>
