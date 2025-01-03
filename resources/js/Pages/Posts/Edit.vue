@@ -51,7 +51,16 @@
                         <input type="file" id="image" @change="handleFileUpload"
                             class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500" />
                         <InputError :message="form.errors.image" class="mt-1" />
-                        <!-- Image Preview -->
+
+
+ <!-- Toon de huidige afbeelding als er al een is -->
+ <div v-if="!imagePreview && props.post.image" class="mt-2">
+        <img :src="`/storage/${props.post.image}`" alt="Current Image" class="w-full rounded-md" />
+        <p class="text-sm text-gray-500 mt-2">Current Image</p>
+    </div>
+
+
+                        <!-- New Image Preview -->
                         <img v-if="imagePreview" :src="imagePreview" alt="Image preview"
                             class="mt-2 w-full rounded-md" />
                     </div>
@@ -91,8 +100,10 @@ const handleFileUpload = (event) => {
         };
         reader.readAsDataURL(file);
         form.image = file;
+
     }
 };
+
 
 // Initialize the form with the post data from props
 const form = useForm({
@@ -101,6 +112,11 @@ const form = useForm({
     body: props.post.body, 
     image: null,  
 });
+
+// Stel een bestaande afbeelding in als default
+if (props.post.image) {
+    imagePreview.value = `/storage/${props.post.image}`;
+}
 
 const createPost = () => form.put(route('posts.update', props.post.id));  
 </script>
