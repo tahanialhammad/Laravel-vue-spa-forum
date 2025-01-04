@@ -23,12 +23,12 @@
         <div class="w-1/4 relative">
             <img class="absolute -top-10 -left-10 z-10"
                 src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Group-37.png" alt="">
-            <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/About-image-1.png"
-                alt="" class="absolute top-10">
+            <img src="assests/images/aboutus1.png"
+                alt="" class="absolute top-10 w-100">
         </div>
         <div class="w-1/4">
-            <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/About-image-2.png"
-                alt="" class="">
+            <img src="assests/images/aboutus2.png"
+                alt="" class="scale-x-[-1]">
         </div>
     </div>
 

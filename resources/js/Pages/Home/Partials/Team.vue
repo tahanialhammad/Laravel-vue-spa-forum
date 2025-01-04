@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div v-for="(item, index) in teams" :key="index"
-                class="relative group bg-slate-900 py-10 px-20 h-80 rounded-3xl flex items-end bg-cover bg-center transition-all duration-300 ease-in-out"
+                class="relative group bg-slate-900 py-10 px-20 h-80 rounded-3xl flex items-end bg-cover bg-top transition-all duration-300 ease-in-out"
                 :style="{ backgroundImage: `url(${item.bgImage})` }">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-800 via-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style="background-size: 200% 100%; background-position: right center;"></div>
@@ -33,8 +33,6 @@
                                 <path
                                     d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.787 4.659-4.787 1.325 0 2.464.099 2.794.143v3.24h-1.917c-1.506 0-1.796.715-1.796 1.763v2.311h3.591l-.467 3.622h-3.124V24h6.125C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z" />
                             </svg>
-
-
                         </a>
                         <a :href="item.linkedInUrl" class="hover:text-rose-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
@@ -74,32 +72,32 @@ import { Link } from '@inertiajs/vue3';
 const teams = [
     {
         name: "Steve Bullack",
-        job: "Digiatl Marketer",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Holder.jpg",
+        job: "Softwareontwikkelaar",
+        bgImage: "/assests/images/team1.jpg",
         facebookUrl: "#",
         linkedInUrl: "#",
         instagramUrl: "#"
     },
     {
-        name: "Steve Bullack",
-        job: "Digiatl Marketer",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Holder-1.jpg",
+        name: "Ethan Carter",
+        job: "UI/UX Designer",
+        bgImage: "/assests/images/team2.jpg",
         facebookUrl: "#",
         linkedInUrl: "#",
         instagramUrl: "#"
     },
     {
-        name: "Steve Bullack",
+        name: "Emily Harper",
         job: "Digiatl Marketer",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Holder-2.jpg",
+        bgImage: "/assests/images/team3.jpg",
         facebookUrl: "#",
         linkedInUrl: "#",
         instagramUrl: "#"
     },
     {
-        name: "Steve Bullack",
-        job: "Digiatl Marketer",
-        bgImage: "https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Holder-3.jpg",
+        name: "Logan Brooks ",
+        job: "Fotograaf",
+        bgImage: "/assests/images/team4.jpg",
         facebookUrl: "#",
         linkedInUrl: "#",
         instagramUrl: "#"
