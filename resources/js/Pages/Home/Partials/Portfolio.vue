@@ -20,8 +20,7 @@ import PortfolioSlider from './PortfolioSlider.vue';
 
         <div class="flex w-full items-center">
             <div class="w-1/3">
-                <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Girl-Sitting.png"
-                    alt="">
+                <img class="scale-x-[-1]" src="assests/images/image1.png" alt="">
             </div>
 
             <div class="w-2/3 flex flex-row gap-2">

@@ -15,7 +15,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950 rounded-s-3xl">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Chess-Icon.svg"
+                    src="assests/images/Chess-Icon.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-cyan-300 my-4 md:my-8 text-center">Expert <br /> Advice</h3>
@@ -27,7 +27,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/megaphone.svg"
+                    src="assests/images/megaphone.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-rose-500 my-4 md:my-8 text-center">Networking <br /> Opportunities</h3>
@@ -39,7 +39,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950 rounded-e-3xl">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/vector.svg"
+                    src="assests/images/vector.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-fuchsia-400 my-4 md:my-8 text-center">Tools & <br /> Resources</h3>
