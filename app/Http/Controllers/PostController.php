@@ -89,13 +89,12 @@ class PostController extends Controller
 
         $post = Post::create([
             ...$data,
-            //  'topic_id' => $topicId,
             'image' => $imagePath,
             'user_id' => $request->user()->id,
         ]);
         // use slug 
         return redirect()->route('posts.index')
-        ->banner('Post created successfully!');
+            ->banner('Post created successfully!');
     }
     /**
      * Display the specified resource.
@@ -141,72 +140,33 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Post $post)
-    // {
-    //     //authorize in resource & policy
-    //     Gate::authorize('update', $post);
-
-    //     $data = $request->validate(
-    //         [
-    //         'title' => 'required|string|max:255',
-    //         'topic_id' => 'required|exists:topics,id',
-    //         'body' => 'required|string',
-    //         'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    //         ]
-    //     );
-
-    //     // Controleer of er een nieuwe afbeelding is geüpload
-    // if ($request->hasFile('image')) {
-    //     $data['image'] = $request->file('image')->store('posts', 'public');
-    // } else {
-    //     // Behoud de oude afbeelding
-    //     $data['image'] = $post->image;
-    // }
-
-    // // Update de post
-    // // $post->update([
-    // //     ...$data,
-    // //     'user_id' => $request->user()->id,
-    // // ]);
-    //      $post->update($data);
-    //     return redirect($post->showRoute(['page' => $request->query('page')]))
-    //         ->banner('Post updated.');
-    // }
-
     public function update(Request $request, Post $post)
     {
-       // dd('mm');
         Gate::authorize('update', $post);
-    
+
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'topic_id' => 'required|exists:topics,id',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-    
+
         if ($request->hasFile('image')) {
-            // Verwijder de oude afbeelding als er een nieuwe wordt geüpload
+            // Delete the old image if a new one is uploaded
             if ($post->image) {
                 Storage::disk('public')->delete($post->image);
             }
-    
+
             $data['image'] = $request->file('image')->store('posts', 'public');
         }
-    
-        // Update de post met de nieuwe gegevens
-        $post->update($data);
-    
-        // return redirect()->route('posts.show', $post->id)
-        // ->banner('Post updated successfully!');
 
-                return redirect($post->showRoute(['page' => $request->query('page')]))
+        // Update the post with the new data
+        $post->update($data);
+
+        // Use slug
+        return redirect($post->showRoute(['page' => $request->query('page')]))
             ->banner('Post updated.');
     }
-    
-
-
-
     /**
      * Remove the specified resource from storage.
      */
@@ -219,6 +179,6 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')
-        ->banner('Post deleted successfully.');
+            ->banner('Post deleted successfully.');
     }
 }

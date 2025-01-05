@@ -51,7 +51,7 @@
                         <input type="file" id="image" @change="handleFileUpload"
                             class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500" />
                         <InputError :message="form.errors.image" class="mt-1" />
-                        <!-- Toon de huidige afbeelding als er al een is -->
+                        <!-- Show the current image if there is one -->
                         <div v-if="!imagePreview && props.post.image" class="mt-2">
                             <img :src="`/storage/${props.post.image}`" alt="Current Image" class="w-full rounded-md" />
                             <p class="text-sm text-gray-500 mt-2">Current Image</p>
@@ -79,7 +79,7 @@ import PageHeading from "@/Components/PageHeading.vue";
 import { ref } from "vue";
 
 const props = defineProps({
-    post: Object, 
+    post: Object,
     topics: Array,
 });
 
@@ -100,13 +100,13 @@ const handleFileUpload = (event) => {
 
 // Initialize the form with the post data from props
 const form = useForm({
-    title: props.post.title || '',  
-    topic_id: props.post.topic_id || props.topics[0]?.id || null,  
-    body: props.post.body || '', 
-    image: null,  
+    title: props.post.title || '',
+    topic_id: props.post.topic_id || props.topics[0]?.id || null,
+    body: props.post.body || '',
+    image: null,
 });
 
-// Stel een bestaande afbeelding in als default
+// Set an existing image as default
 if (props.post.image) {
     imagePreview.value = `/storage/${props.post.image}`;
 }
@@ -115,15 +115,15 @@ const updatePost = () => {
     form.post(route('posts.update', props.post.id), {
         forceFormData: true,  // Force Inertia to send data as FormData, useful for file uploads
         onSuccess: () => {
-            console.log('Post bijgewerkt');
+            console.log('Post updated');
         },
         onError: (errors) => {
-            console.error('Fout bij het bijwerken van de post:', errors);
+            console.error('Error updating the post:', errors);
         }
     });
 };
 </script>
 
 <style scoped>
-/* Voeg hier je stijlen toe */
+/* Add your styles here */
 </style>
