@@ -38,8 +38,8 @@ Route::middleware([
 
     // Posts
     Route::resource('posts', PostController::class)->only(['create', 'store', 'edit', 'destroy']);
-   Route::post('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-  //  Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+    Route::post('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
     // Comments
     Route::resource('posts.comments', CommentController::class)->shallow()->only(['store', 'update', 'destroy']);
     Route::post('/likes/{type}/{id}', [LikeController::class, 'store'])->name('likes.store');
