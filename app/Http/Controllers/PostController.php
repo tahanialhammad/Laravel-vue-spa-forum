@@ -175,6 +175,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+       // dd('mm');
         Gate::authorize('update', $post);
     
         $data = $request->validate([
@@ -191,15 +192,15 @@ class PostController extends Controller
             }
     
             $data['image'] = $request->file('image')->store('posts', 'public');
-        } else {
-            // Behoud de oude afbeelding
-            $data['image'] = $post->image;
         }
     
-        // Update de post
+        // Update de post met de nieuwe gegevens
         $post->update($data);
     
-        return redirect($post->showRoute(['page' => $request->query('page')]))
+        // return redirect()->route('posts.show', $post->id)
+        // ->banner('Post updated successfully!');
+
+                return redirect($post->showRoute(['page' => $request->query('page')]))
             ->banner('Post updated.');
     }
     
