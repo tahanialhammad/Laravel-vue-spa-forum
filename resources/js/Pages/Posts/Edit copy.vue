@@ -3,7 +3,7 @@
         <Container>
             <PageHeading>Edit a Post {{ form.title }}</PageHeading>
 
-            <form @submit.prevent="updatePost" class="mt-6 flex">
+            <form @submit.prevent="createPost" class="mt-6 flex">
                 <div class="w-3/4">
                     <div>
                         <InputLabel for="title" class="sr-only">Title</InputLabel>
@@ -35,7 +35,7 @@
                         <PrimaryButton type="submit">Update Post</PrimaryButton>
                     </div>
 
-                    <div class="mt-3">
+                    <div class="mt-3">    
                         <InputLabel for="topic_id">Select a Topic</InputLabel>
                         <select v-model="form.topic_id" id="topic_id"
                             class="mt-1 w-full rounded-md text-black border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500">
@@ -51,11 +51,15 @@
                         <input type="file" id="image" @change="handleFileUpload"
                             class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500" />
                         <InputError :message="form.errors.image" class="mt-1" />
-                        <!-- Toon de huidige afbeelding als er al een is -->
-                        <div v-if="!imagePreview && props.post.image" class="mt-2">
-                            <img :src="`/storage/${props.post.image}`" alt="Current Image" class="w-full rounded-md" />
-                            <p class="text-sm text-gray-500 mt-2">Current Image</p>
-                        </div>
+
+
+ <!-- Toon de huidige afbeelding als er al een is -->
+ <div v-if="!imagePreview && props.post.image" class="mt-2">
+        <img :src="`/storage/${props.post.image}`" alt="Current Image" class="w-full rounded-md" />
+        <p class="text-sm text-gray-500 mt-2">Current Image</p>
+    </div>
+
+
                         <!-- New Image Preview -->
                         <img v-if="imagePreview" :src="imagePreview" alt="Image preview"
                             class="mt-2 w-full rounded-md" />
@@ -65,6 +69,7 @@
         </Container>
     </AppLayout>
 </template>
+
 
 <script setup>
 import { useForm } from "@inertiajs/vue3";
@@ -95,14 +100,16 @@ const handleFileUpload = (event) => {
         };
         reader.readAsDataURL(file);
         form.image = file;
+
     }
 };
 
+
 // Initialize the form with the post data from props
 const form = useForm({
-    title: props.post.title || '',  
+    title: props.post.title,  
     topic_id: props.post.topic_id || props.topics[0]?.id || null,  
-    body: props.post.body || '', 
+    body: props.post.body, 
     image: null,  
 });
 
@@ -111,19 +118,5 @@ if (props.post.image) {
     imagePreview.value = `/storage/${props.post.image}`;
 }
 
-const updatePost = () => {
-    form.post(route('posts.update', props.post.id), {
-        forceFormData: true,  // Force Inertia to send data as FormData, useful for file uploads
-        onSuccess: () => {
-            console.log('Post bijgewerkt');
-        },
-        onError: (errors) => {
-            console.error('Fout bij het bijwerken van de post:', errors);
-        }
-    });
-};
+const createPost = () => form.put(route('posts.update', props.post.id));  
 </script>
-
-<style scoped>
-/* Voeg hier je stijlen toe */
-</style>
