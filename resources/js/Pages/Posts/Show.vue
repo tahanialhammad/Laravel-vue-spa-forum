@@ -16,23 +16,14 @@
 
                     <PageHeading class="mt-2 flex justify-between">
                         {{ post.title }}
-
-                        <Link v-if="post.can.update" :href="route('posts.edit', post.id)" class="font-black text-3xl rounded-full">edit</Link>
-
-
-                        <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
-                            @click.prevent="confirmDelete(post)">
-                            delete post
-                        </PrimaryButton>
-
                     </PageHeading>
 
                     <span class="block mt-1 text-sm text-slate-300">{{ formattedDate }} by {{ post.user.name }}</span>
 
                     <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
                     </article>
-                    
-      <div class="mt-4 flex justify-between items-center ">
+
+                    <div class="mt-4 flex justify-between items-center ">
                         <!-- only login user can see that btn -->
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
@@ -80,6 +71,15 @@
                     </div>
                 </div>
                 <div class="w-1/4 ms-8 flex flex-col gap-5">
+
+
+                    <PrimaryLink v-if="post.can.update" :href="route('posts.edit', post.id)"> Edit Ppost</PrimaryLink>
+
+
+                    <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
+                        @click.prevent="confirmDelete(post)">
+                        delete post
+                    </PrimaryButton>
                     <SideBaar :recentPosts="recentPosts" />
                 </div>
             </div>
@@ -176,6 +176,7 @@ const deleteComment = async (commentId) => {
 
 
 import Swal from 'sweetalert2';
+import PrimaryLink from "@/Components/PrimaryLink.vue";
 
 const confirmDelete = (post) => {
     // Use SweetAlert2 for the confirmation
