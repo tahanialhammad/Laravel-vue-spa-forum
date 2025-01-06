@@ -6,11 +6,11 @@ import Marketing from '@/Pages/Auth/Partials/Marketing.vue';
 
     <div class="flex">
 
-        <div class="w-1/2 flex items-center justify-end h-screen">
+        <div class="hidden md:flex w-1/2 items-center justify-end h-screen">
             <Marketing />
         </div>
 
-        <div class="w-1/2">
+        <div class="w-full md:w-1/2">
 
             <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-slate-950">
                 <div>
