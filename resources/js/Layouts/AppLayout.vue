@@ -9,6 +9,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import ConfirmationModalWrapper from "@/Components/ConfirmationModalWrapper.vue";
 import FooterSection from "@/Components/FooterSection.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import PrimaryLink from "@/Components/PrimaryLink.vue";
 
 defineProps({
     title: String,
@@ -105,7 +106,7 @@ const menu = [
                                         "
                                             class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-slate-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user
-                                                    .profile_photo_url
+                                                .profile_photo_url
                                                 " :alt="$page.props.auth.user.name
                                                     " />
                                         </button>
@@ -155,15 +156,9 @@ const menu = [
                             </div>
 
                             <template v-else>
-                                <Link :href="route('login')"
-                                    class="rounded-full px-6 py-2 me-2 text-white/70 ring-1 ring-rose-700 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                Log in
-                                </Link>
-
-                                <Link :href="route('register')"
-                                    class="rounded-full px-6 py-2 text-white/70 transition hover:text-white hover:bg-rose-700 focus:outline-none focus-visible:ring-[#FF2D20] dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                Register
-                                </Link>
+                                <PrimaryLink :href="route('login')">Log in</PrimaryLink>
+                                <PrimaryLink :href="route('register')" class="ms-2 bg-rose-500 hover:bg-transparent">
+                                    Register</PrimaryLink>
                             </template>
                         </div>
 
@@ -200,9 +195,16 @@ const menu = [
                     hidden: !showingNavigationDropdown,
                 }" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
+                        <template v-for="item in menu" :key="item.name">
+                            <ResponsiveNavLink v-if="item.when ? item.when() : true" :href="item.url"
+                                :active="route().current(item.route)">
+                                {{ item.name }}
+                            </ResponsiveNavLink>
+                        </template>
+                        <div v-if="!usePage().props.auth.user">
+                            <ResponsiveNavLink :href="route('login')">Log in</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('register')">Register</ResponsiveNavLink>
+                        </div>
                     </div>
 
                     <!-- Responsive Settings Options -->
