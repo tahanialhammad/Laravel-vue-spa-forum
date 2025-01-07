@@ -11,11 +11,7 @@
                         We are a community of freelancers, developers, and digital strategists sharing knowledge and
                         support to help you grow and succeed in the digital world
                     </p>
-                    <Link
-                        class="w-40 px-4 py-2 text-white font-bold text-center rounded-full bg-gradient-to-r from-emerald-500 to-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                        :href="route('welcome')">
-                    Contact us
-                    </Link>
+                    <GradientLink  :href="route('contact')">Contact us</GradientLink>
                 </div>
 
             </div>
@@ -57,8 +53,8 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import ApplicationMark from './ApplicationMark.vue';
 import ApplicationLogo from './ApplicationLogo.vue';
+import GradientLink from '@/Components/GradientLink.vue';
 
 const footerMenu1 = [
     {
