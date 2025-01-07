@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+import AuthenticationLayout from '@/Layouts/AuthenticationLayout.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -28,7 +28,7 @@ const submit = () => {
 <template>
     <Head title="Secure Area" />
 
-    <AuthenticationCard>
+    <AuthenticationLayout>
         <template #logo>
             <AuthenticationCardLogo />
         </template>
@@ -59,5 +59,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </AuthenticationCard>
+    </AuthenticationLayout>
 </template>

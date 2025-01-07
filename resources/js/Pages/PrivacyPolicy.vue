@@ -4,7 +4,7 @@ import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 
 defineProps({
     policy: String,
-});
+pö});
 </script>
 
 <template>
