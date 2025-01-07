@@ -3,9 +3,7 @@ import Marketing from '@/Pages/Auth/Partials/Marketing.vue';
 </script>
 
 <template>
-
     <div class="flex">
-
         <div class="hidden md:flex w-1/2 items-center justify-end h-screen">
             <Marketing />
         </div>

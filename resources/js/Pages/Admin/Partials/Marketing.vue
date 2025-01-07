@@ -2,7 +2,7 @@
     <div class="relative flex flex-col gap-4 items-start  mt-20">
         <div class="relative mb-8 flex justify-between w-full">
             <h1 class="relative font-black text-4xl z-10 uppercase">
-                All Marketing
+                All Marketings
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
             <div v-if="$page.props.auth.user">

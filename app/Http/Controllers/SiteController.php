@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
 use App\Mail\contactUs;
+use App\Models\Marketing;
 use App\Models\Post;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -18,9 +19,12 @@ class SiteController extends Controller
             ->get();
 
         $topics = Topic::take(6)->get();
+        $marketings = Marketing::take(6)->get();
+
         return inertia('Home/Welcome', [
             'posts' => PostResource::collection($posts),
-            'topics' => $topics
+            'topics' => $topics,
+            'marketings' => $marketings
         ]);
     }
     public function contact()

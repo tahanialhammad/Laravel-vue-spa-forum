@@ -10,7 +10,7 @@
 
                 <HeroSection />
 
-                <Portfolio />
+                <Portfolio :marketings="marketings"/>
 
                 <Features />
 
@@ -36,6 +36,6 @@ import AboutUs from './Partials/AboutUs.vue';
 import Blog from './Partials/Blog.vue';
 import Topics from './Partials/Topics.vue';
 
-defineProps(["posts", 'topics']);
+defineProps(["posts", 'topics', 'marketings']);
 
 </script>

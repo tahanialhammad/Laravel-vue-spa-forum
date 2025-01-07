@@ -1,16 +1,9 @@
-<script setup lang="ts">
-import Circle from '@/Components/Svg/Circle.vue';
-import GradientCircle from '@/Components/Svg/GradientCircle.vue';
-import Square from '@/Components/Svg/Square.vue';
-import PortfolioSlider from './PortfolioSlider.vue';
-</script>
-
 <template>
     <div class="relative bg-slate-900 rounded-3xl p-4 m-8 flex flex-col gap-4 items-center">
         <h3 class="text-rose-500">Topic</h3>
         <div class="relative">
             <h1 class="relative font-black text-4xl z-10">
-                Popular Topics on Our Forum
+                Latest events on our forum
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
         </div>
@@ -24,9 +17,18 @@ import PortfolioSlider from './PortfolioSlider.vue';
             </div>
 
             <div class="w-2/3 flex flex-row gap-2">
-                <PortfolioSlider class="-right-40" />
+                <PortfolioSlider :marketings="marketings" class="-right-40" />
             </div>
 
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import Circle from '@/Components/Svg/Circle.vue';
+import GradientCircle from '@/Components/Svg/GradientCircle.vue';
+import Square from '@/Components/Svg/Square.vue';
+import PortfolioSlider from './PortfolioSlider.vue';
+defineProps(['marketings']);
+
+</script>
