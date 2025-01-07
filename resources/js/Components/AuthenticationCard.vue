@@ -5,7 +5,7 @@ import Marketing from '@/Pages/Auth/Partials/Marketing.vue';
 <template>
     <div class="flex">
         <div class="hidden md:flex w-1/2 items-center justify-end h-screen">
-            <Marketing />
+            <Marketing :latestMarketing="$page.props.latestMarketing" />
         </div>
 
         <div class="w-full md:w-1/2">

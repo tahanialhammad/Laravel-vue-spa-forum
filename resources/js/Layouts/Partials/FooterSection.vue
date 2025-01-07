@@ -44,6 +44,13 @@
             <!-- Latest Articles -->
             <div class="w-1/5">
                 <h2 class="text-xl font-bold text-rose-500 mb-4">More information</h2>
+                <ul>
+                <li v-for="post in latestPosts" :key="post.id">
+                    <Link :href="`/posts/${post.id}/${post.title}`" class="flex items-center hover:text-rose-400">
+                     {{ post.title }}
+                    </Link>
+                </li>
+            </ul>
                 <!-- You can add article links here in the future -->
             </div>
         </div>
@@ -53,8 +60,12 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import ApplicationLogo from './ApplicationLogo.vue';
 import GradientLink from '@/Components/GradientLink.vue';
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+
+defineProps({
+    latestPosts: Array, // Ontvang de data als een prop
+});
 
 const footerMenu1 = [
     {

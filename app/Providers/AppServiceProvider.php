@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Comment;
+use App\Models\Marketing;
 use App\Models\Post;
 use App\Models\User;
+use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +43,17 @@ class AppServiceProvider extends ServiceProvider
             'post' => Post::class,
             'comment' => Comment::class,
             'user' => User::class,
+        ]);
+
+        // Share global data with all Inertia views
+        Inertia::share([
+            'latestPosts' => function () {
+                return Post::latest()->take(2)->get(); // Fetch the 2 most recent posts from the 'posts' table
+            },
+
+            'latestMarketing' => function () {
+                return Marketing::latest()->take(1)->get(); // Get the latest 2 marketing items
+            },
         ]);
     }
 }
