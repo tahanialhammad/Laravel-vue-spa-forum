@@ -7,7 +7,7 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import ConfirmationModalWrapper from "@/Components/ConfirmationModalWrapper.vue";
-import FooterSection from "@/Components/FooterSection.vue";
+import FooterSection from "@/Layouts/Partials/FooterSection.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import PrimaryLink from "@/Components/PrimaryLink.vue";
 
@@ -320,6 +320,6 @@ const menu = [
         <!-- Confirmation alert modal. It can be used instead of Sweetalert -->
         <ConfirmationModalWrapper />
 
-        <FooterSection />
+        <FooterSection :latestPosts="$page.props.latestPosts" />
     </div>
 </template>

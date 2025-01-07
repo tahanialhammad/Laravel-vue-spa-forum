@@ -1,6 +1,6 @@
 <template>
-    <div class="w-full h-screen bg-cover bg-center relative"
-        style="background-image: url('https://img.freepik.com/free-photo/3d-rendering-modern-luxury-hotel-office-reception-lounge-hall_105762-1977.jpg?t=st=1736245265~exp=1736248865~hmac=7fa5edced13571ca9dade0fe0cb6021e9ac481fabab2c26db90333051e2db1f0&w=900');">
+    <div v-for="marketing in latestMarketing" :key="marketing.id" class="w-full h-screen bg-cover bg-center relative"
+    :style="{ backgroundImage: `url(${marketing.image ? marketing.image : 'https://img.freepik.com/free-photo/3d-rendering-modern-luxury-hotel-office-reception-lounge-hall_105762-1977.jpg'})` }"
 
         <!-- Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-rose-200 via-transparent to-slate-950 opacity-50"></div>
@@ -20,6 +20,7 @@
 <script setup>
 
 import AuthLink from "@/Components/AuthLink.vue";
+defineProps(['latestMarketing']);
 
 const menu = [
     {
