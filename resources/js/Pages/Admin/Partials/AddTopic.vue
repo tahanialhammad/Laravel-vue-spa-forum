@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PrimaryButton @click="openModal">+</PrimaryButton>
+        <button @click="openModal"  class="font-black text-3xl rounded-full">+</button>
 
         <Modal :show="showModal" @close="closeModal" maxWidth="xl" closeable>
             <template #default>

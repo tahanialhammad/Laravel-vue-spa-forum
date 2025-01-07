@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TopicResource;
-use App\Http\Resources\UserResource;
 use App\Models\Marketing;
-use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,6 +31,7 @@ class AdminController extends Controller
 
     public function destroyMarketing(Request $request, Marketing $marketing)
     {
-        dd('ggg');
+        $marketing->delete();
+        return back()->banner('Marketing item deleted successfully!');
     }
 }
