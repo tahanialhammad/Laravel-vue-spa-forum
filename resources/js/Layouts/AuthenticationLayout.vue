@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Marketing from '@/Pages/Auth/Partials/Marketing.vue';
+import Marketing from '@/Layouts/Partials/Marketing.vue';
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/vue3";
-import AuthenticationCard from "@/Components/AuthenticationCard.vue";
+import AuthenticationLayout from "@/Layouts/AuthenticationLayout.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
@@ -33,7 +33,7 @@ const submit = () => {
 <template>
 
     <Head title="Log in" />
-    <AuthenticationCard canResetPassword="canResetPassword">
+    <AuthenticationLayout canResetPassword="canResetPassword">
         <template #logo>
             <Link :href="'/'">
             <ApplicationLogo />
@@ -77,6 +77,6 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </AuthenticationCard>
+    </AuthenticationLayout>
 
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div v-for="marketing in latestMarketing" :key="marketing.id" class="w-full h-screen bg-cover bg-center relative"
-    :style="{ backgroundImage: `url(${marketing.image ? marketing.image : 'https://img.freepik.com/free-photo/3d-rendering-modern-luxury-hotel-office-reception-lounge-hall_105762-1977.jpg'})` }"
-
+        :style="{ backgroundImage: `url(${marketing.image ? marketing.image : 'https://img.freepik.com/free-photo/3d-rendering-modern-luxury-hotel-office-reception-lounge-hall_105762-1977.jpg'})` }"
+>
         <!-- Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-rose-200 via-transparent to-slate-950 opacity-50"></div>
 
