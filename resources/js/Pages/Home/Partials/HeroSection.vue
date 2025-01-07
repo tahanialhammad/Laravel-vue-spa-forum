@@ -15,18 +15,17 @@
                 Are you a freelancer looking for guidance, support, and a place to share your journey? Whether you’re just starting or an experienced pro, our forum is the perfect space for you to connect, learn, and grow your freelancing career.
                 <!-- Small Circle SVG -->
                 <Circle class="absolute right-1/2 z-0" circleClass="fill-rose-500" />
-
             </h3>
 
             <GradientLink  :href="route('contact')">Contact us</GradientLink>
         </div>
 
         <!-- Right Section with Image -->
-        <div class="relative">
+        <div class="relative w-1/2">
 
             <Square class="absolute top-5 right-5 z-0" />
 
-            <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Hero-Image.png"
+            <img src="assests/images/hero-image1.png"
                 alt="Hero Image">
             <img class="absolute top-8 left-0"
                 src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Abstract-Shape-2.png"
