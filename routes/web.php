@@ -6,6 +6,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\AdminController;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,11 @@ Route::middleware([
 
     //Topic
     Route::resource('topics', TopicController::class);
+
+    //Marketing
+    Route::post('/marketings', [AdminController::class, 'storeMarketing'])->name('marketings.storeMarketing');
+    Route::delete('/marketings/{marketing}', [AdminController::class, 'destroyMarketing'])->name('marketings.destroyMarketing');
+
 });
 
 
