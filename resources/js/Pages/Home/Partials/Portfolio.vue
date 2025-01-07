@@ -1,6 +1,6 @@
 <template>
     <div class="relative bg-slate-900 rounded-3xl p-4 m-8 flex flex-col gap-4 items-center">
-        <h3 class="text-rose-500">Topic</h3>
+        <h3 class="text-rose-500">Events</h3>
         <div class="relative">
             <h1 class="relative font-black text-4xl z-10">
                 Latest events on our forum

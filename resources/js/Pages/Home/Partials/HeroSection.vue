@@ -18,11 +18,7 @@
 
             </h3>
 
-            <Link
-                class="w-40 px-4 py-2 text-white font-bold text-center rounded-full bg-gradient-to-r from-emerald-500 to-rose-500 hover:bg-gradient-to-r hover:from-rose-500 hover:to-emerald-500 transition duration-300"
-                :href="route('welcome')">
-                Join us
-            </Link>
+            <GradientLink  :href="route('contact')">Contact us</GradientLink>
         </div>
 
         <!-- Right Section with Image -->
@@ -44,4 +40,6 @@ import Circle from '@/Components/Svg/Circle.vue';
 import GradientCircle from '@/Components/Svg/GradientCircle.vue';
 import Square from '@/Components/Svg/Square.vue';
 import { Link } from '@inertiajs/vue3';
+import GradientLink from '@/Components/GradientLink.vue';
+
 </script>
