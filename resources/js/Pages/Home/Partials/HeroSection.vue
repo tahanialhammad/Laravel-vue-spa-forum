@@ -27,9 +27,9 @@
 
             <img src="assests/images/hero-image1.png"
                 alt="Hero Image">
-            <img class="absolute top-8 left-0"
-                src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Abstract-Shape-2.png"
-                alt="Abstract Shape">
+            <img class="absolute top-8 left-0 w-1/2"
+                src="assests/images/3dimage.png"
+                alt="3d Shape">
         </div>
     </div>
 </template>

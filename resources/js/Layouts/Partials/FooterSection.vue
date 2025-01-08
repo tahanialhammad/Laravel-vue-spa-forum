@@ -11,7 +11,7 @@
                         We are a community of freelancers, developers, and digital strategists sharing knowledge and
                         support to help you grow and succeed in the digital world
                     </p>
-                    <GradientLink  :href="route('contact')">Contact us</GradientLink>
+                    <GradientLink :href="route('contact')">Contact us</GradientLink>
                 </div>
 
             </div>
@@ -44,14 +44,13 @@
             <!-- Latest Articles -->
             <div class="w-1/5">
                 <h2 class="text-xl font-bold text-rose-500 mb-4">More information</h2>
-                <ul>
-                <li v-for="post in latestPosts" :key="post.id">
-                    <Link :href="`/posts/${post.id}/${post.title}`" class="flex items-center hover:text-rose-400">
-                     {{ post.title }}
-                    </Link>
-                </li>
-            </ul>
-                <!-- You can add article links here in the future -->
+                <ul class="list-disc pl-5 space-y-2 marker:text-rose-500">
+                    <li v-for="post in latestPosts" :key="post.id">
+                        <Link :href="`/posts/${post.id}/${post.title}`" class="flex items-center hover:text-rose-400">
+                        {{ post.title }}
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </div>
     </footer>
@@ -78,6 +77,10 @@ const footerMenu1 = [
         url: route('posts.index'),
         route: 'posts.index',
     },
-
+    {
+        name: "Contact",
+        url: route("contact"),
+        route: "contact",
+    },
 ];
 </script>
