@@ -23,10 +23,10 @@
                 <!-- Right Section with Image -->
                 <div class="relative flex-1">
                     <Square class="absolute top-8 right-5 z-0" />
-                    <img src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Contact-Image.png"
-                        alt="Hero Image">
-                    <img class="absolute -top-20 right-20"
-                        src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Shape.png"
+                    <img  src="assests/images/contact-image2.png"
+                        alt="Contact Image">
+                    <img class="absolute -end-20 left-0 w-20"
+                        src="assests/images/ring.png"
                         alt="Abstract Shape">
                 </div>
             </div>

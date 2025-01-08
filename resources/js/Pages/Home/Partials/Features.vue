@@ -7,8 +7,9 @@
             </h1>
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
         </div>
-        <img class="absolute top-20 -left-24 z-0"
-            src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/09/3D_Shape-1.svg" alt="">
+            <img class="absolute top-20 -left-24 z-0 w-64"
+                src="assests/images/3dimage.png"
+                alt="3d Shape">
 
             <div class="bg-slate-900 rounded-3xl p-0 my-20 md:flex w-full items-stretch">
             <!-- Card 1 -->

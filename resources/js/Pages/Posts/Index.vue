@@ -11,8 +11,8 @@
                         <p>12, September 2024</p>
                         <p class="text-black"> BY Roy Hipper</p>
                     </div>
-                    <img class="w-1/2 rounded-3xl"
-                        src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/Featured-Image-1970x1044.jpg"
+                    <img class="w-1/2 rounded-3xl h-80"
+                        src="assests/images/anime-dragon.jpg"
                         alt="">
                 </div>
                 <div class="flex justify-between items-center">
