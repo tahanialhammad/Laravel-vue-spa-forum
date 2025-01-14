@@ -24,20 +24,20 @@
 }
 
 .testclass {
-  position: relative; 
+    position: relative;
 }
 
 .testclass::before {
-  content: "";
-  position: absolute;
-  right: 0; 
-  top: -50px; 
-  width: 50px; 
-  height: 50px; 
-  background-color: green; 
-  border-radius: 50%; 
-  box-shadow: 31px 35px 0 10px red; 
-  pointer-events: none; 
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 50%;
+    box-shadow: 31px 35px 0 10px red;
+    pointer-events: none;
 }
 
 .testclass::after {
@@ -51,4 +51,14 @@
     border-radius: 50%;
     box-shadow: 31px -35px 0 10px gray;
     pointer-events: none;
+}
+
+/* Sweet alert */
+.swal2-confirm {
+    border-radius: 50rem;
+    background-color: rgb(244 63 94);
+}
+.swal2-cancel {
+    border-radius: 50rem;
+    color: white;
 }
