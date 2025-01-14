@@ -3,8 +3,8 @@
         <Container>
             <PageHeading>Create a Post</PageHeading>
 
-            <form @submit.prevent="createPost" class="mt-6 flex">
-                <div class="w-3/4">
+            <form @submit.prevent="createPost" class="mt-6 md:flex">
+                <div class="w-full md:w-3/4">
                     <div>
                         <InputLabel for="title" class="sr-only">Title</InputLabel>
                         <TextInput id="title" class="w-full" v-model="form.title"
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="w-1/4 ms-8">
+                <div class="w-full md:w-1/4 mt-8 md:mt-0 ms-8">
                     <div class="">
                         <PrimaryButton type="submit">Create Post</PrimaryButton>
                     </div>
