@@ -1,5 +1,4 @@
 <template>
-    <!-- Good for SEO: Push the URL with a slug into the HTML head. -->
 
     <Head>
         <link rel="canonical" :href="post.routes.show" />
@@ -7,8 +6,10 @@
 
     <AppLayout :title="post.title">
         <Container>
-            <div class="flex">
-                <div class="w-3/4">
+            <!-- Responsive grid layout -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Main content -->
+                <div class="md:col-span-3">
                     <img v-if="post.image" :src="post.image ? `/${post.image}` : ''" :alt="post.title"
                         class="w-full max-h-80 object-cover rounded-3xl shadow-md mb-8" />
 
@@ -23,8 +24,7 @@
                     <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
                     </article>
 
-                    <div class="mt-4 flex justify-between items-center ">
-                        <!-- only login user can see that btn -->
+                    <div class="mt-4 flex justify-between items-center">
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
                                 class="inline-block bg-rose-600 hover:bg-rose-500 transition-colors text-white py-1.5 px-3 rounded-full">
@@ -43,9 +43,9 @@
                             <HeartIcon class="w-4 h-4 inline-block" />
                         </div>
                     </div>
+
                     <div class="mt-12">
                         <h2 class="text-xl font-semibold">Comments</h2>
-
                         <form v-if="$page.props.auth.user"
                             @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()" class="mt-4">
                             <div>
@@ -54,32 +54,31 @@
                                     placeholder="Speak your mind Spock…" editorClass="!min-h-[100px]" />
                                 <InputError :message="commentForm.errors.body" class="mt-1" />
                             </div>
-
                             <PrimaryButton type="submit" class="mt-3" :disabled="commentForm.processing"
                                 v-text="commentIdBeingEdited ? 'Update Comment' : 'Add Comment'"></PrimaryButton>
                             <SecondaryButton v-if="commentIdBeingEdited" @click="cancelEditComment" class="ml-2">Cancel
                             </SecondaryButton>
                         </form>
-
                         <ul class="divide-y divide-slate-500 mt-4">
                             <li v-for="comment in comments.data" :key="comment.id" class="px-2 py-4">
                                 <Comment @edit="editComment" @delete="deleteComment" :comment="comment" />
                             </li>
                         </ul>
-
                         <Pagination :meta="comments.meta" :only="['comments']" />
                     </div>
                 </div>
-                <div class="w-1/4 ms-8 flex flex-col gap-5">
 
+                <!-- Sidebar -->
+                <div class="md:col-span-1">
+                    <div class="mb-8 flex justify-between">
+                        <PrimaryLink v-if="post.can.update" :href="route('posts.edit', post.id)"> Edit Post
+                        </PrimaryLink>
 
-                    <PrimaryLink v-if="post.can.update" :href="route('posts.edit', post.id)"> Edit Ppost</PrimaryLink>
-
-
-                    <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
-                        @click.prevent="confirmDelete(post)">
-                        delete post
-                    </PrimaryButton>
+                        <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
+                            @click.prevent="confirmDelete(post)">
+                            Delete Post
+                        </PrimaryButton>
+                    </div>
                     <SideBaar :recentPosts="recentPosts" />
                 </div>
             </div>
