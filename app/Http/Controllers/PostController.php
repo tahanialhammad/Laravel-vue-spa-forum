@@ -63,22 +63,10 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        // if ($request->newtopic) {
-        //     $newTopic = Topic::create([
-        //         'slug' => Str::slug($request->newtopic),
-        //         'name' => $request->newtopic,
-        //         'description' => $request->newtopic,
-        //     ]);
-        //     $topicId = $newTopic->id;  // Get the ID of the newly created topic
-        // } else {
-        //     // Use the existing topic_id if no new topic is provided
-        //     $topicId = $request->topic_id;
-        // }
-
         $data =  $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|min:10|max:255',
             'topic_id' => 'required|exists:topics,id',
-            'body' => 'required|string',
+            'body' => 'required|min:100|max:10000|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
