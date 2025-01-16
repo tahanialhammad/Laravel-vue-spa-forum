@@ -36,11 +36,6 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
-import Container from "@/Components/Container.vue";
-import MarkdownEditor from "@/Components/MarkdownEditor.vue";
-import PageHeading from "@/Components/PageHeading.vue";
-import { ref } from "vue";
 import TextArea from "@/Components/TextArea.vue";
 
 const form = useForm({

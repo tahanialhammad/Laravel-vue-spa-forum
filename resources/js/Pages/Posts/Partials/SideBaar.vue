@@ -1,6 +1,6 @@
 <template>
   <img class="rounded-3xl"
-    src="https://demo.phlox.pro/agency-aestry/wp-content/uploads/sites/279/2021/05/336-x-280-ad.jpg" alt="">
+    src="assests/images/recent-posts.png" alt="">
   <h1 class="font-black text-4xl">Recent Posts</h1>
 
   <Card v-for="recentPost in recentPosts" :key="recentPost.id"

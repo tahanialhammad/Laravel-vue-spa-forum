@@ -30,7 +30,7 @@
                 </ul>
             </div>
 
-            <!-- Services Links -->
+            <!-- Topic Links -->
             <div class="w-1/5">
                 <h2 class="text-xl font-bold text-rose-500 mb-4">Popular Topics</h2>
                 <ul class="list-disc pl-5 space-y-2 marker:text-rose-500">

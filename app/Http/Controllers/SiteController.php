@@ -40,7 +40,7 @@ class SiteController extends Controller
             'message' => 'required|string',
         ]);
 
-        Mail::to('tahanina@yahoo.com')->send(new contactUs($data));
+        Mail::to('info@example.com')->send(new contactUs($data));
 
         return redirect()->route('contact')
         ->banner("Your email has been sent. We'll get back to you soon!.");

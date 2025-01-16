@@ -20,13 +20,6 @@
                         {{ post.title }}
                     </span>
                     </Link>
-<!-- 
-                    <Link :href="route('posts.show', [post.id, post.title])">
-                    test1
-                    </Link>
-                    <Link :href="route('posts.show', { post: post.id, slug: post.title })" class="group block px-2 py-4">
-                    test22
-                    </Link> -->
                 </template>
             </Card>
 

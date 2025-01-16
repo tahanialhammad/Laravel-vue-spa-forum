@@ -26,7 +26,6 @@
 
 <script setup>
 import { useForm, usePage } from "@inertiajs/vue3";
-import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
