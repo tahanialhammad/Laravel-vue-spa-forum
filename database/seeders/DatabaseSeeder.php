@@ -39,8 +39,8 @@ class DatabaseSeeder extends Seeder
             ...$posts->random(15)->map(fn (Post $post) => ['likeable_id' => $post]),
         ))
         ->create([
-            'name' => 'Tahani',
-            'email' => 'tahani@yahoo.com',
+            'name' => 'Admin',
+            'email' => 'admin@examle.com',
             'is_admin' =>true,
 
         ]);

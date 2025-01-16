@@ -39,7 +39,7 @@ class ContactUs extends Mailable
     public function content(): Content
     {
         return new Content(
-          //  view: 'emails.contact-us', 
+          // view: 'emails.contact-us', //Or use view
           markdown:'emails.contact-us', 
         );
     }
