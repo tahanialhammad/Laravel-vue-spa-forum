@@ -13,17 +13,22 @@
                     <img v-if="post.image" :src="post.image ? `/${post.image}` : ''" :alt="post.title"
                         class="w-full max-h-80 object-cover rounded-3xl shadow-md mb-8" />
 
+                    <!-- Display the post topic as a clickable pill -->
                     <Pill :href="route('posts.index', { topic: post.topic.slug })">{{ post.topic.name }}</Pill>
 
+                    <!-- Display post title -->
                     <PageHeading class="mt-2 flex justify-between">
                         {{ post.title }}
                     </PageHeading>
 
+                    <!-- Display post creation date and author -->
                     <span class="block mt-1 text-sm text-slate-300">{{ formattedDate }} by {{ post.user.name }}</span>
 
+                    <!-- Post content rendered as HTML -->
                     <article class="mt-6 prose prose-sm max-w-none text-slate-100" v-html="post.html">
                     </article>
 
+                    <!-- Interaction section for liking/unliking the post -->
                     <div class="mt-4 flex justify-between items-center">
                         <div v-if="$page.props.auth.user" class="mt-2">
                             <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post"
@@ -38,14 +43,17 @@
                             </Link>
                         </div>
 
+                        <!-- Display number of likes for the post -->
                         <div class="text-rose-500 font-bold">
                             {{ post.likes_count }}
                             <HeartIcon class="w-4 h-4 inline-block" />
                         </div>
                     </div>
 
+                    <!-- Comments section -->
                     <div class="mt-12">
                         <h2 class="text-xl font-semibold">Comments</h2>
+                        <!-- Comment form displayed if the user is authenticated -->
                         <form v-if="$page.props.auth.user"
                             @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()" class="mt-4">
                             <div>
@@ -64,16 +72,18 @@
                                 <Comment @edit="editComment" @delete="deleteComment" :comment="comment" />
                             </li>
                         </ul>
+                        <!-- Pagination for comments -->
                         <Pagination :meta="comments.meta" :only="['comments']" />
                     </div>
                 </div>
 
-                <!-- Sidebar -->
+                <!-- Sidebar section -->
                 <div class="md:col-span-1">
                     <div class="mb-8 flex justify-between">
                         <PrimaryLink v-if="post.can.update" :href="route('posts.edit', post.id)"> Edit Post
                         </PrimaryLink>
 
+                        <!-- Button to delete the post if the user has permission -->
                         <PrimaryButton v-if="post.can.delete" method="delete" as="button" type="button"
                             @click.prevent="confirmDelete(post)">
                             Delete Post
