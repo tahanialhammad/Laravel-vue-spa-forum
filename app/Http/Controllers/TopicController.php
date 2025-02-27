@@ -35,7 +35,7 @@ class TopicController extends Controller
             'slug' => Str::slug($request->name),
             'description' => $request->description,
         ]);
-        return back()->banner('Comment deleted.');
+        return back()->banner('Topic created successfully.');
     }
 
     /**
