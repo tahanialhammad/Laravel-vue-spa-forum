@@ -12,11 +12,8 @@
                         <p class="text-sm lg:text-base">12, September 2024</p>
                         <p class="text-black text-sm lg:text-base">BY Roy Hipper</p>
                     </div>
-                    <img
-                        class="w-full lg:w-1/2 rounded-3xl h-60 lg:h-80 object-cover"
-                        src="assests/images/anime-dragon.jpg"
-                        alt="Anime Dragon"
-                    />
+                    <img class="w-full lg:w-1/2 rounded-3xl h-60 lg:h-80 object-cover"
+                        src="assests/images/anime-dragon.jpg" alt="Anime Dragon" />
                 </div>
 
                 <!-- Heading and Search -->
@@ -83,8 +80,3 @@ const searchForm = useForm({
 });
 const page = usePage();
 </script>
-
-
-
-
-

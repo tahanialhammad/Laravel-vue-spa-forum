@@ -1,5 +1,5 @@
 <template>
-    
+
     <div class="max-h-64 overflow-y-scroll">
         <table class="min-w-full bg-slate-900 text-slate-200 rounded-3xl">
             <thead class=" border-b">
@@ -31,7 +31,7 @@
                     </td>
                     <td class="text-center">
                         <Link :href="post.routes.show">
-                             <EyeIcon class="size-4 inline-block " />
+                        <EyeIcon class="size-4 inline-block " />
                         </Link>
                     </td>
                 </tr>

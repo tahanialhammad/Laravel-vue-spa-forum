@@ -12,6 +12,7 @@
                         <InputError :message="form.errors.title" class="mt-1" />
                     </div>
 
+                    <!-- Body Input with Markdown Editor -->
                     <div class="mt-3">
                         <InputLabel for="body" class="sr-only">Body</InputLabel>
                         <MarkdownEditor v-model="form.body">
@@ -35,7 +36,8 @@
                         <PrimaryButton type="submit">Create Post</PrimaryButton>
                     </div>
 
-                    <div class="mt-3">    
+                    <!-- Topic Selection -->
+                    <div class="mt-3">
                         <InputLabel for="topic_id">Select a Topic</InputLabel>
                         <select v-model="form.topic_id" id="topic_id"
                             class="mt-1 w-full rounded-md text-black border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500">
@@ -46,6 +48,7 @@
                         <InputError :message="form.errors.topic_id" class="mt-1" />
                     </div>
 
+                    <!-- Image Upload -->
                     <div class="mt-3">
                         <InputLabel for="image">Upload Image</InputLabel>
                         <input type="file" id="image" @change="handleFileUpload"
