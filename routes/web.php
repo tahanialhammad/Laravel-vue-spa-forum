@@ -12,11 +12,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdminMiddleware;
 
+// Test route - Returns a UserResource for debugging purposes
 Route::get('/test', function () {
     return UserResource::make(User::find(1));
 });
 
-// Auth admin only
+// ===========================
+// Admin-Only Routes (Protected)
+// ===========================
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -30,35 +34,39 @@ Route::middleware([
     //Marketing
     Route::post('/marketings', [AdminController::class, 'storeMarketing'])->name('marketings.storeMarketing');
     Route::delete('/marketings/{marketing}', [AdminController::class, 'destroyMarketing'])->name('marketings.destroyMarketing');
-
 });
 
-
+// ===========================
+// Authenticated User Routes
+// ===========================
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
 
+    // Dashboard - Main user panel
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Posts
+    // Posts - Allows authenticated users to create, edit, and delete their posts
     Route::resource('posts', PostController::class)->only(['create', 'store', 'edit', 'destroy']);
     Route::post('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
-    // Comments
+    // Comments - Nested resource under posts 
     Route::resource('posts.comments', CommentController::class)->shallow()->only(['store', 'update', 'destroy']);
     Route::post('/likes/{type}/{id}', [LikeController::class, 'store'])->name('likes.store');
     Route::delete('/likes/{type}/{id}', [LikeController::class, 'destroy'])->name('likes.destroy');
 });
 
-// Site
+// ===========================
+// Website Public Routes (No Authentication Required)
+// ===========================
 Route::controller(SiteController::class)->group(function () {
     Route::get('/', 'index')->name('welcome');
     Route::get('contact', 'contact')->name('contact');
     Route::post('contact', 'store')->name('contact.store');
 });
 
-// Posts
+// Public routes for viewing posts
 Route::get('posts/{topic?}', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}/{slug}', [PostController::class, 'show'])->name('posts.show'); // Use showroute with slug
