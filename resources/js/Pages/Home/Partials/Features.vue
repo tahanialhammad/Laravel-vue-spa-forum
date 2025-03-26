@@ -8,7 +8,7 @@
             <GradientCircle class="absolute -top-8 -left-10 z-0" />
         </div>
             <img class="absolute top-20 -left-24 z-0 w-64"
-                src="assests/images/3dimage.png"
+                src="assets/images/3dimage.png"
                 alt="3d Shape">
 
             <div class="bg-slate-900 rounded-3xl p-0 my-20 md:flex w-full items-stretch">
@@ -16,7 +16,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950 rounded-s-3xl">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="assests/images/Chess-Icon.png"
+                    src="assets/images/Chess-Icon.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-cyan-300 my-4 md:my-8 text-center">Expert <br /> Advice</h3>
@@ -28,7 +28,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="assests/images/megaphone.png"
+                    src="assets/images/megaphone.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-rose-500 my-4 md:my-8 text-center">Networking <br /> Opportunities</h3>
@@ -40,7 +40,7 @@
             <div class="w-full md:w-1/3 p-8 md:py-20 md:px-28 hover:bg-slate-950 rounded-e-3xl">
                 <img
                     class="w-16 md:w-20 lg:w-24 h-auto mx-auto"
-                    src="assests/images/vector.png"
+                    src="assets/images/vector.png"
                     alt=""
                 />
                 <h3 class="text-2xl md:text-3xl font-black text-fuchsia-400 my-4 md:my-8 text-center">Tools & <br /> Resources</h3>

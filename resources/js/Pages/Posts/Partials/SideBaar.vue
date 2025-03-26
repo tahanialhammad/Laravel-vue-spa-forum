@@ -1,6 +1,6 @@
 <template>
   <img class="rounded-3xl"
-    src="assests/images/recent-posts.png" alt="">
+    src="assets/images/recent-posts.png" alt="">
   <h1 class="font-black text-4xl">Recent Posts</h1>
 
   <Card v-for="recentPost in recentPosts" :key="recentPost.id"

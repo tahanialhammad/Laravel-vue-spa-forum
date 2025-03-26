@@ -23,10 +23,10 @@
                 <!-- Right Section with Image -->
                 <div class="relative flex-1">
                     <Square class="absolute top-8 right-5 z-0" />
-                    <img  src="assests/images/contact-image2.png"
+                    <img  src="assets/images/contact-image2.png"
                         alt="Contact Image">
                     <img class="absolute -end-20 left-0 w-20"
-                        src="assests/images/ring.png"
+                        src="assets/images/ring.png"
                         alt="Abstract Shape">
                 </div>
             </div>

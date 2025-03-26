@@ -25,10 +25,10 @@
 
             <Square class="absolute top-5 right-5 z-0" />
 
-            <img src="assests/images/hero-image1.png"
+            <img src="assets/images/hero-image1.png"
                 alt="Hero Image">
             <img class="absolute top-8 left-0 w-1/2"
-                src="assests/images/3dimage.png"
+                src="assets/images/3dimage.png"
                 alt="3d Shape">
         </div>
     </div>

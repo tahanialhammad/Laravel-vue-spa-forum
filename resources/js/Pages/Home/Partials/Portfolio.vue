@@ -13,7 +13,7 @@
 
         <div class="flex flex-col lg:flex-row w-full items-center gap-4 lg:gap-0">
             <div class="w-full lg:w-1/3">
-                <img class="scale-x-[-1] w-full lg:w-auto" src="assests/images/image1.png" alt="">
+                <img class="scale-x-[-1] w-full lg:w-auto" src="assets/images/image1.png" alt="">
             </div>
 
             <div class="w-full lg:w-2/3 flex flex-row gap-2">
